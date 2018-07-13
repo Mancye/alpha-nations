@@ -29,23 +29,32 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+
+        saveNations();
         System.out.println(ChatColor.RED + "[alphaNATIONS] Plugin Disabled Successfully");
     }
 
-    private void saveNations() {
+    public void saveNations() {
         nationsConfig.set("Amount of Nations", NationManager.nationList.size());
         saveCustomYml(nationsConfig, nationsFile);
         int x = 1;
         for (Nation n : NationManager.getNationList()) {
-            nationsConfig.set(x + ". name", n.getName());
-            nationsConfig.set(x + ". members", n.getMembers());
-            nationsConfig.set(x + ". menudescription", n.getMenuDescription());
-            x++;
+            if (x <= NationManager.getNationList().size()) {
+                nationsConfig.set(x + ". name", n.getName());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". members", n.getMembers());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". menudescription", n.getMenuDescription());
+                saveCustomYml(nationsConfig, nationsFile);
+                x++;
+            } else {
+                break;
+            }
         }
 
     }
 
-    private void loadNations() {
+    public void loadNations() {
         if (!nationsConfig.contains("Amount of Nations")) {
             nationsConfig.set("Amount of Nations", 0);
             saveCustomYml(nationsConfig, nationsFile);

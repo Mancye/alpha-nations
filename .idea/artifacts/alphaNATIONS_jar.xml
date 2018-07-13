@@ -3,6 +3,7 @@
     <output-path>$USER_HOME$/Desktop/Premade Spigot 1.10/plugins</output-path>
     <root id="archive" name="alphaNATIONS.jar">
       <element id="module-output" name="alphaNATIONS" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
     </root>
   </artifact>
 </component>

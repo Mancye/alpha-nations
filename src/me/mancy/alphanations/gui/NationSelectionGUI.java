@@ -13,17 +13,19 @@ import java.util.List;
 
 public class NationSelectionGUI {
 
-    private static Inventory selectionGUI;
-
     public static Inventory getSelectionInventory() {
 
-        selectionGUI = Bukkit.createInventory(null, 27, ChatColor.RED + "Choose A Nation");
-
+        Inventory selectionGUI = Bukkit.createInventory(null, 27, ChatColor.RED + "Choose A Nation");
+        int slot = 12;
         for (Nation nation : NationManager.getNationList()) {
             ItemStack nationItem = new ItemStack(Material.BOOK);
             ItemMeta nationMeta = nationItem.getItemMeta();
             List<String> nationLore = nation.getMenuDescription();
             nationMeta.setDisplayName(nation.getName());
+            nationMeta.setLore(nationLore);
+            nationItem.setItemMeta(nationMeta);
+            selectionGUI.setItem(slot, nationItem);
+            slot++;
         }
 
         return selectionGUI;

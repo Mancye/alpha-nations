@@ -35,7 +35,14 @@ public class Nation {
         return members;
     }
 
+    public void addMember(Player player) {
+        if (player == null) return;
+        if  (members.contains(player.getUniqueId())) return;
+        members.add(player.getUniqueId());
+    }
+
     public void removeMember(Player player) {
+        if (player == null) return;
         if (members.contains(player.getUniqueId())) {
             members.remove(player);
         }

@@ -1,11 +1,13 @@
 package me.mancy.alphanations.commands;
 
+import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class BaseCommand implements CommandExecutor {
 
@@ -16,7 +18,9 @@ public class BaseCommand implements CommandExecutor {
         if (label.equalsIgnoreCase("nations")) {
             if (args.length == 0) {
                 if (sender.hasPermission("nations.")) {
-
+                    Player p = (Player) sender;
+                    p.openInventory(NationSelectionGUI.getSelectionInventory());
+                    return true;
                 } else {
                     sender.sendMessage(noPermission);
                     return false;
