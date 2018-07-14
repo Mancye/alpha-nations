@@ -4,9 +4,11 @@ import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class NationManager {
 
@@ -65,35 +67,27 @@ public class NationManager {
             }
         }
         if (nationToRemove != null) nationList.remove(nationToRemove);
-
-        List<Nation> nationsToSave = new ArrayList<>();
-        for (Nation nation : nationList) {
-            if (!nationsToSave.contains(nation)) {
-                nationsToSave.add(nation);
-            }
-        }
-
-        nationList.clear();
-
-        plugin.saveNations();
-        plugin.loadNations();
-        nationList = nationsToSave;
-        plugin.saveNations();
-        plugin.loadNations();
-
     }
 
     public static void removeNation(Nation nation) {
         if (!nationList.contains(nation)) return;
         if (nation != null) {
-            plugin.nationsConfig.set((nationList.indexOf(nation) + 1) + ". name", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-            plugin.nationsConfig.set((nationList.indexOf(nation) + 1) + ". members", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-            plugin.nationsConfig.set((nationList.indexOf(nation) + 1) + ". menudescription", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
             nationList.remove(nation);
         }
+    }
+
+    public static Nation getPlayersNation(Player p) {
+        if (p == null) return null;
+        UUID uuid = p.getUniqueId();
+        Nation nation;
+
+        for (Nation n : nationList) {
+            if (n.getMembers().contains(uuid)) {
+                nation = n;
+                return nation;
+            }
+        }
+        return null;
     }
 
 }

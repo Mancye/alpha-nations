@@ -4,8 +4,10 @@ import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.NationSelectHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -46,6 +48,8 @@ public class Main extends JavaPlugin {
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ". menudescription", n.getMenuDescription());
                 saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". item", n.getItem().getType().name());
+                saveCustomYml(nationsConfig, nationsFile);
                 x++;
             } else {
                 break;
@@ -70,8 +74,11 @@ public class Main extends JavaPlugin {
             }
             if (!nationsConfig.contains(x + ". menudescription")) nationsConfig.set(x + ". menudescription", null);
             final List<String> menuDescription = nationsConfig.getStringList(x + ". menudescription");
+            if (!nationsConfig.contains(x + ". item")) nationsConfig.set(x + ". item", null);
+            final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ". item")));
             Nation nation = new Nation(name, members);
             nation.setMenuDescription(menuDescription);
+            nation.setItem(item);
             NationManager.addNation(nation);
         }
     }

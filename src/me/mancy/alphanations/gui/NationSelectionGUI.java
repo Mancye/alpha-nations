@@ -18,7 +18,8 @@ public class NationSelectionGUI {
         Inventory selectionGUI = Bukkit.createInventory(null, 27, ChatColor.RED + "Choose A Nation");
         int slot = 12;
         for (Nation nation : NationManager.getNationList()) {
-            ItemStack nationItem = new ItemStack(Material.BOOK);
+            ItemStack nationItem = nation.getItem();
+            if (nation.getItem() == null) nationItem = new ItemStack(Material.BARRIER);
             ItemMeta nationMeta = nationItem.getItemMeta();
             List<String> nationLore = nation.getMenuDescription();
             nationMeta.setDisplayName(nation.getName());

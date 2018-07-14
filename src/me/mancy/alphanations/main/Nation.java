@@ -1,6 +1,9 @@
 package me.mancy.alphanations.main;
 
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class Nation {
     List<UUID> members = new ArrayList<>();
     List<String> menuDescription = new ArrayList<>();
 
+    ItemStack item;
     public Nation(Main main) {
 
     }
@@ -21,6 +25,13 @@ public class Nation {
         this.name = name;
         if (members == null) members = new ArrayList<>();
         this.members = members;
+    }
+    public ItemStack getItem() {
+        return item;
+    }
+
+    public void setItem(ItemStack item) {
+        this.item = item;
     }
 
     public String getName() {
