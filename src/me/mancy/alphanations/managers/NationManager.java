@@ -3,6 +3,7 @@ package me.mancy.alphanations.managers;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,26 +64,22 @@ public class NationManager {
                 nationToRemove = nation;
             }
         }
+        if (nationToRemove != null) nationList.remove(nationToRemove);
 
-        if (nationToRemove != null) {
-            plugin.nationsConfig.set((nationList.indexOf(nationToRemove) + 1) + ". name", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-            plugin.nationsConfig.set((nationList.indexOf(nationToRemove) + 1) + ". members", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-            plugin.nationsConfig.set((nationList.indexOf(nationToRemove) + 1) + ". menudescription", null);
-            plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-            nationList.remove(nationToRemove);
-            for (int x = 1; x <= nationList.size(); x++) {
-                plugin.nationsConfig.set(x + ". name", null);
-                plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-                plugin.nationsConfig.set(x + ". members", null);
-                plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
-                plugin.nationsConfig.set(x + ". menudescription", null);
-                plugin.saveCustomYml(plugin.nationsConfig, plugin.nationsFile);
+        List<Nation> nationsToSave = new ArrayList<>();
+        for (Nation nation : nationList) {
+            if (!nationsToSave.contains(nation)) {
+                nationsToSave.add(nation);
             }
-            plugin.saveNations();
-            plugin.loadNations();
         }
+
+        nationList.clear();
+
+        plugin.saveNations();
+        plugin.loadNations();
+        nationList = nationsToSave;
+        plugin.saveNations();
+        plugin.loadNations();
 
     }
 
