@@ -2,7 +2,9 @@ package me.mancy.alphanations.main;
 
 import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.AdminGUIHandler;
+import me.mancy.alphanations.listeners.ChatHandler;
 import me.mancy.alphanations.listeners.NationSelectHandler;
+import me.mancy.alphanations.listeners.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,8 +21,8 @@ import java.util.UUID;
 
 public class Main extends JavaPlugin {
 
-    public File nationsFile = new File(this.getDataFolder() + "/nations.yml");
-    public FileConfiguration nationsConfig = YamlConfiguration.loadConfiguration(nationsFile);
+    private File nationsFile = new File(this.getDataFolder() + "/nations.yml");
+    private FileConfiguration nationsConfig = YamlConfiguration.loadConfiguration(nationsFile);
 
     @Override
     public void onEnable() {
@@ -32,12 +34,11 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
         saveNations();
         System.out.println(ChatColor.RED + "[alphaNATIONS] Plugin Disabled Successfully");
     }
 
-    public void saveNations() {
+    private void saveNations() {
         nationsConfig.set("Amount of Nations", NationManager.nationList.size());
         saveCustomYml(nationsConfig, nationsFile);
         int x = 1;
@@ -59,7 +60,7 @@ public class Main extends JavaPlugin {
 
     }
 
-    public void loadNations() {
+    private void loadNations() {
         if (!nationsConfig.contains("Amount of Nations")) {
             nationsConfig.set("Amount of Nations", 0);
             saveCustomYml(nationsConfig, nationsFile);
@@ -92,6 +93,8 @@ public class Main extends JavaPlugin {
         new NationManager(this);
         new NationSelectHandler(this);
         new AdminGUIHandler(this);
+        new ChatHandler(this);
+        new TownJoinHandler(this);
     }
 
     public void saveCustomYml(FileConfiguration ymlConfig, File ymlFile) {

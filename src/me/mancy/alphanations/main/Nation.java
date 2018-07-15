@@ -13,12 +13,12 @@ import java.util.UUID;
 public class Nation {
     private Main plugin;
 
-    String name = "";
-    List<UUID> members = new ArrayList<>();
-    List<String> menuDescription = new ArrayList<>();
-    List<Town> towns = new ArrayList<>();
+    private String name = "";
+    private List<UUID> members = new ArrayList<>();
+    private List<String> menuDescription = new ArrayList<>();
+    private List<Town> towns = new ArrayList<>();
 
-    ItemStack item;
+    ItemStack item = new ItemStack(Material.BARRIER);
 
     public Nation(String name, List<UUID> members) {
         this.name = name;

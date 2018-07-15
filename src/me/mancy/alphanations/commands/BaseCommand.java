@@ -1,5 +1,6 @@
 package me.mancy.alphanations.commands;
 
+import me.mancy.alphanations.gui.AdminNationGUI;
 import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
@@ -19,7 +20,7 @@ public class BaseCommand implements CommandExecutor {
             if (args.length == 0) {
                 if (sender.hasPermission("nations.")) {
                     Player p = (Player) sender;
-                    p.openInventory(NationSelectionGUI.getSelectionInventory());
+                    p.openInventory(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.PLAYER));
                     return true;
                 } else {
                     sender.sendMessage(noPermission);
@@ -36,7 +37,7 @@ public class BaseCommand implements CommandExecutor {
                     }
 
                 } else if (args[0].equalsIgnoreCase("list")) {
-                    if (sender.hasPermission("nations.list")) {
+                    if (sender.hasPermission("nations.list") || sender.hasPermission("nations.*")) {
                         for (Nation nation : NationManager.nationList) {
                             sender.sendMessage("- " + nation.getName());
                         }
@@ -44,6 +45,10 @@ public class BaseCommand implements CommandExecutor {
                     } else {
                         sender.sendMessage(noPermission);
                         return false;
+                    }
+                } else if (args[0].equalsIgnoreCase("admin")) {
+                    if (sender.hasPermission("nations.admin") || sender.hasPermission("nations.*")) {
+                        ((Player) sender).openInventory(AdminNationGUI.getAdminGUI());
                     }
                 }
             } else if (args.length == 2) {

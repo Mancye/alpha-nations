@@ -13,7 +13,7 @@ import java.util.List;
 
 public class NationSelectionGUI {
 
-    public static enum NationSelectType {
+    public enum NationSelectType {
         PLAYER, ADMIN_NAME, ADMIN_BLOCK, ADMIN_DELETE, ADMIN_COLOR;
     }
 

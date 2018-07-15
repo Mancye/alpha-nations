@@ -30,9 +30,10 @@ public class AdminGUIHandler implements Listener {
 
     @EventHandler
     private void handleMainGUIClicks(InventoryClickEvent event) {
-        if (!(event.getClickedInventory().equals(AdminNationGUI.getAdminGUI()))) return;
+        if (!(event.getInventory().equals(AdminNationGUI.mainAdminGUI))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player p = (Player) event.getWhoClicked();
+        event.setCancelled(true);
         switch (event.getSlot()) {
 
             case 10: {
@@ -57,9 +58,11 @@ public class AdminGUIHandler implements Listener {
     @EventHandler
     private void handleNationEditSelectionClicks(InventoryClickEvent event) {
         if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_BLOCK))) {
+            event.setCancelled(true);
             event.getWhoClicked().openInventory(AdminNationGUI.getEditBlockInventory());
             return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_NAME))) {
+            event.setCancelled(true);
             if (event.getClickedInventory().getItem(event.getSlot()) != null) {
                 ItemStack clickedItem = event.getClickedInventory().getItem(event.getSlot());
                 if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
@@ -72,8 +75,10 @@ public class AdminGUIHandler implements Listener {
             }
             return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_COLOR))) {
+            event.setCancelled(true);
             return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_DELETE))) {
+            event.setCancelled(true);
             return;
         } else {
             return;
