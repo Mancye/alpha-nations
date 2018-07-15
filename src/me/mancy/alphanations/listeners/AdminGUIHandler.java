@@ -58,9 +58,10 @@ public class AdminGUIHandler implements Listener {
     @EventHandler
     private void handleNationEditSelectionClicks(InventoryClickEvent event) {
         if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_BLOCK))) {
+            System.out.println("ADMIN BLOCK CLICKED");
             event.setCancelled(true);
+            event.getWhoClicked().closeInventory();
             event.getWhoClicked().openInventory(AdminNationGUI.getEditBlockInventory());
-            return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_NAME))) {
             event.setCancelled(true);
             if (event.getClickedInventory().getItem(event.getSlot()) != null) {
@@ -73,15 +74,10 @@ public class AdminGUIHandler implements Listener {
                     ((Player) event.getWhoClicked()).sendMessage(ChatColor.GOLD + "ENTER NEW NATION NAME: ");
                 }
             }
-            return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_COLOR))) {
             event.setCancelled(true);
-            return;
         } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_DELETE))) {
             event.setCancelled(true);
-            return;
-        } else {
-            return;
         }
     }
 
