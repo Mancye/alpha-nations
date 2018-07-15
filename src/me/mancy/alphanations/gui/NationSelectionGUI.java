@@ -13,9 +13,23 @@ import java.util.List;
 
 public class NationSelectionGUI {
 
-    public static Inventory getSelectionInventory() {
+    public static enum NationSelectType {
+        PLAYER, ADMIN_NAME, ADMIN_BLOCK, ADMIN_DELETE, ADMIN_COLOR;
+    }
 
-        Inventory selectionGUI = Bukkit.createInventory(null, 27, ChatColor.RED + "Choose A Nation");
+    public static Inventory getSelectionInventory(NationSelectType type) {
+        String invName = "";
+        switch (type) {
+            case PLAYER: {
+                invName = ChatColor.RED + "Choose A Nation To Join";
+                break;
+            }
+            default: {
+                invName = ChatColor.RED + "Choose A Nation To Edit";
+                break;
+            }
+        }
+        Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
         int slot = 12;
         for (Nation nation : NationManager.getNationList()) {
             ItemStack nationItem = nation.getItem();

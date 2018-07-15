@@ -32,8 +32,6 @@ public class AdminNationGUI {
          */
         Inventory inv = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Select a nation");
 
-
-
         ItemStack editBlock = new ItemStack(Material.GRASS);
         ItemMeta editBlockMeta = editBlock.getItemMeta();
         editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit block");

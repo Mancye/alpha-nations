@@ -20,7 +20,7 @@ public class NationSelectHandler implements Listener {
 
     @EventHandler
     private void onSelect(InventoryClickEvent event) {
-        if  (!(event.getInventory().equals(NationSelectionGUI.getSelectionInventory()))) return;
+        if  (!(event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.PLAYER)))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
 
         Player p = (Player) event.getWhoClicked();

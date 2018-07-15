@@ -16,8 +16,6 @@ public class ChatHandler implements Listener {
     private void setChatColor(AsyncPlayerChatEvent event) {
         if (NationManager.getPlayersNation(event.getPlayer()) == null) return;
 
-        Color color =
-
     }
 
 }

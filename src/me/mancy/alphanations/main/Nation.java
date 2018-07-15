@@ -1,5 +1,6 @@
 package me.mancy.alphanations.main;
 
+import com.palmergames.bukkit.towny.object.Town;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -15,11 +16,9 @@ public class Nation {
     String name = "";
     List<UUID> members = new ArrayList<>();
     List<String> menuDescription = new ArrayList<>();
+    List<Town> towns = new ArrayList<>();
 
     ItemStack item;
-    public Nation(Main main) {
-
-    }
 
     public Nation(String name, List<UUID> members) {
         this.name = name;

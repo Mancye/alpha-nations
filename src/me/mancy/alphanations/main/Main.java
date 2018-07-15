@@ -1,6 +1,7 @@
 package me.mancy.alphanations.main;
 
 import me.mancy.alphanations.commands.BaseCommand;
+import me.mancy.alphanations.listeners.AdminGUIHandler;
 import me.mancy.alphanations.listeners.NationSelectHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
@@ -90,6 +91,7 @@ public class Main extends JavaPlugin {
     private void registerEvents() {
         new NationManager(this);
         new NationSelectHandler(this);
+        new AdminGUIHandler(this);
     }
 
     public void saveCustomYml(FileConfiguration ymlConfig, File ymlFile) {
