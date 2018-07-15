@@ -1,5 +1,6 @@
 package me.mancy.alphanations.listeners;
 
+import me.mancy.alphanations.gui.AdminNationGUI;
 import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
@@ -11,18 +12,15 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class NationSelectHandler implements Listener {
 
-    private Main plugin;
-
     public NationSelectHandler(Main main) {
-        this.plugin = main;
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        main.getServer().getPluginManager().registerEvents(this, main);
     }
 
     @EventHandler
     private void onSelect(InventoryClickEvent event) {
-        if  (!(event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.PLAYER)))) return;
+        if  (!(event.getInventory().equals(NationSelectionGUI.getPlayerNationSelectionInventory()))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
-
+        event.setCancelled(true);
         Player p = (Player) event.getWhoClicked();
 
         for (Nation nation : NationManager.getNationList()) {
@@ -37,6 +35,26 @@ public class NationSelectHandler implements Listener {
             }
         }
 
+    }
+
+    @EventHandler
+    private void onAdminSelect(InventoryClickEvent event) {
+        if  (!(event.getInventory().equals(NationSelectionGUI.getAdminNationSelectionInventory()))) return;
+        if (!(event.getWhoClicked() instanceof Player)) return;
+        event.setCancelled(true);
+        Player p = (Player) event.getWhoClicked();
+        Nation selectedNation = null;
+        for (Nation nation : NationManager.getNationList()) {
+            if (event.getClickedInventory().getItem(event.getSlot()) != null) {
+                if (event.getClickedInventory().getItem(event.getSlot()).hasItemMeta() && event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) {
+                    if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
+                        selectedNation = nation;
+                    }
+                }
+            }
+        }
+        if (selectedNation == null) return;
+        AdminNationGUI.getAdminEditGUI(selectedNation);
     }
 
 }

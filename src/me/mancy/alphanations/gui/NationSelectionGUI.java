@@ -1,48 +1,25 @@
 package me.mancy.alphanations.gui;
 
-import me.mancy.alphanations.main.Nation;
-import me.mancy.alphanations.managers.NationManager;
+import me.mancy.alphanations.utils.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 
 public class NationSelectionGUI {
 
-    public enum NationSelectType {
-        PLAYER, ADMIN_NAME, ADMIN_BLOCK, ADMIN_DELETE, ADMIN_COLOR;
+    public static Inventory getPlayerNationSelectionInventory() {
+        final String invName = ChatColor.RED + "Choose a nation";
+        Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
+        InventoryUtil.fillNations(selectionGUI, 12);
+        InventoryUtil.fillEmptySlots(selectionGUI);
+        return selectionGUI;
     }
 
-    public static Inventory getSelectionInventory(NationSelectType type) {
-        String invName = "";
-        switch (type) {
-            case PLAYER: {
-                invName = ChatColor.RED + "Choose A Nation To Join";
-                break;
-            }
-            default: {
-                invName = ChatColor.RED + "Choose A Nation To Edit";
-                break;
-            }
-        }
+    public static Inventory getAdminNationSelectionInventory() {
+        final String invName = ChatColor.RED + "Choose a nation to edit";
         Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
-        int slot = 12;
-        for (Nation nation : NationManager.getNationList()) {
-            ItemStack nationItem = nation.getItem();
-            if (nation.getItem() == null) nationItem = new ItemStack(Material.BARRIER);
-            ItemMeta nationMeta = nationItem.getItemMeta();
-            List<String> nationLore = nation.getMenuDescription();
-            nationMeta.setDisplayName(nation.getName());
-            nationMeta.setLore(nationLore);
-            nationItem.setItemMeta(nationMeta);
-            selectionGUI.setItem(slot, nationItem);
-            slot++;
-        }
-
+        InventoryUtil.fillNations(selectionGUI, 12);
+        InventoryUtil.fillEmptySlots(selectionGUI);
         return selectionGUI;
     }
 

@@ -37,11 +37,20 @@ public class AdminGUIHandler implements Listener {
         switch (event.getSlot()) {
 
             case 10: {
-                p.openInventory(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_BLOCK));
+                p.openInventory(AdminNationGUI.getEditBlockInventory());
                 break;
             }
             case 12: {
-                p.openInventory(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_NAME));
+                if (event.getClickedInventory().getItem(event.getSlot()) != null) {
+                    ItemStack clickedItem = event.getClickedInventory().getItem(event.getSlot());
+                    if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
+                        String name = ChatColor.stripColor(clickedItem.getItemMeta().getDisplayName());
+                        Nation n = NationManager.getNation(name);
+                        playersEditingNames.put((Player) event.getWhoClicked(), n);
+                        ((Player) event.getWhoClicked()).closeInventory();
+                        ((Player) event.getWhoClicked()).sendMessage(ChatColor.GOLD + "ENTER NEW NATION NAME: ");
+                    }
+                }
                 break;
             }
             case 14: {
@@ -52,32 +61,6 @@ public class AdminGUIHandler implements Listener {
                 p.openInventory(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_DELETE));
                 break;
             }
-        }
-    }
-
-    @EventHandler
-    private void handleNationEditSelectionClicks(InventoryClickEvent event) {
-        if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_BLOCK))) {
-            System.out.println("ADMIN BLOCK CLICKED");
-            event.setCancelled(true);
-            event.getWhoClicked().closeInventory();
-            event.getWhoClicked().openInventory(AdminNationGUI.getEditBlockInventory());
-        } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_NAME))) {
-            event.setCancelled(true);
-            if (event.getClickedInventory().getItem(event.getSlot()) != null) {
-                ItemStack clickedItem = event.getClickedInventory().getItem(event.getSlot());
-                if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
-                    String name = ChatColor.stripColor(clickedItem.getItemMeta().getDisplayName());
-                    Nation n = NationManager.getNation(name);
-                    playersEditingNames.put((Player) event.getWhoClicked(), n);
-                    ((Player) event.getWhoClicked()).closeInventory();
-                    ((Player) event.getWhoClicked()).sendMessage(ChatColor.GOLD + "ENTER NEW NATION NAME: ");
-                }
-            }
-        } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_COLOR))) {
-            event.setCancelled(true);
-        } else if (event.getInventory().equals(NationSelectionGUI.getSelectionInventory(NationSelectionGUI.NationSelectType.ADMIN_DELETE))) {
-            event.setCancelled(true);
         }
     }
 

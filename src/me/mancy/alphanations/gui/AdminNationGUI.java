@@ -1,5 +1,7 @@
 package me.mancy.alphanations.gui;
 
+import me.mancy.alphanations.main.Nation;
+import me.mancy.alphanations.utils.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,27 +12,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class AdminNationGUI {
 
-    private static void fillEmptySlots(Inventory inv) {
-        ItemStack emptySlot = new ItemStack(Material.STAINED_GLASS_PANE);
-        ItemMeta emptyMeta = emptySlot.getItemMeta();
-        emptyMeta.setDisplayName("");
-        emptySlot.setItemMeta(emptyMeta);
 
-        for (int i = 0; i < inv.getSize(); i++) {
-            if (inv.getItem(i) == null || inv.getItem(i).getType().equals(Material.AIR)) {
-                inv.setItem(i, emptySlot);
-            }
-        }
 
-    }
-    public static Inventory mainAdminGUI;
-    public static Inventory getAdminGUI() {
+    public static Inventory getAdminEditGUI(Nation nationToEdit) {
         /*
          10           12              14           16
          Edit Block   Edit Name   Edit Color   Delete Nation
          Grass Block   Nametag    White wool   Barrier
          */
-        mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Select a nation");
+        Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation: " + nationToEdit.getName());
 
         ItemStack editBlock = new ItemStack(Material.GRASS);
         ItemMeta editBlockMeta = editBlock.getItemMeta();
@@ -56,7 +46,7 @@ public class AdminNationGUI {
         deleteNation.setItemMeta(deleteMeta);
         mainAdminGUI.setItem(16, deleteNation);
 
-        fillEmptySlots(mainAdminGUI);
+        InventoryUtil.fillEmptySlots(mainAdminGUI);
 
         return mainAdminGUI;
 
@@ -66,7 +56,7 @@ public class AdminNationGUI {
         Inventory inv = Bukkit.createInventory(null, 9, ChatColor.RED + "Set Nation's Block");
         ItemStack defaultBlock = new ItemStack(Material.BOOK);
         inv.setItem(4, defaultBlock);
-        fillEmptySlots(inv);
+        InventoryUtil.fillEmptySlots(inv);
         return inv;
     }
 
@@ -76,7 +66,7 @@ public class AdminNationGUI {
             ItemStack wool = new ItemStack(Material.WOOL, (byte) x);
             inv.setItem(x, wool);
         }
-        fillEmptySlots(inv);
+        InventoryUtil.fillEmptySlots(inv);
         return inv;
 
     }

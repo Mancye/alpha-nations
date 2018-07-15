@@ -66,4 +66,26 @@ public class Nation {
         return this.menuDescription;
     }
 
+    public boolean doesContainTown(Town town) {
+        for (Town t : this.towns) {
+            if (town == t) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addTown(Town town) {
+        if (doesContainTown(town)) removeTown(town);
+        this.towns.add(town);
+    }
+
+    public void removeTown(Town town) {
+        if (doesContainTown(town))
+            this.towns.remove(town);
+    }
+
+    public List<Town> getTowns() {
+        return this.towns;
+    }
 }
