@@ -1,4 +1,4 @@
-package me.mancy.alphanations.listeners;
+package me.mancy.alphanations.listeners.misc;
 
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.managers.NationManager;

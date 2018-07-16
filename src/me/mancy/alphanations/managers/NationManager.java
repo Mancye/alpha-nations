@@ -1,7 +1,9 @@
 package me.mancy.alphanations.managers;
 
+import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -88,6 +90,26 @@ public class NationManager {
             }
         }
         return null;
+    }
+
+    public static Nation getTownsNation(Town town) {
+        if (town == null) return null;
+
+        for (Nation n : nationList) {
+            if (n.getTowns().contains(town)) {
+                return n;
+            }
+        }
+
+        return null;
+    }
+
+    public static void broadcastToNation(Nation nation, String message) {
+        for (UUID uuid : nation.getMembers()) {
+            if (Bukkit.getPlayer(uuid) != null) {
+                Bukkit.getPlayer(uuid).sendMessage(message);
+            }
+        }
     }
 
 }

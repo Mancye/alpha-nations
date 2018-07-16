@@ -10,8 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class AdminNationGUI {
-
+public class AdminMainGUI {
 
 
     public static Inventory getAdminEditGUI(Nation nationToEdit) {
@@ -52,23 +51,8 @@ public class AdminNationGUI {
 
     }
 
-    public static Inventory getEditBlockInventory() {
-        Inventory inv = Bukkit.createInventory(null, 9, ChatColor.RED + "Set Nation's Block");
-        ItemStack defaultBlock = new ItemStack(Material.BOOK);
-        inv.setItem(4, defaultBlock);
-        InventoryUtil.fillEmptySlots(inv);
-        return inv;
-    }
 
-    public static Inventory getEditColorInventory() {
-        Inventory inv = Bukkit.createInventory(null, 27, ChatColor.RED + "Select Nation Color");
-        for (int x = 0; x <= 15; x++) {
-            ItemStack wool = new ItemStack(Material.WOOL, (byte) x);
-            inv.setItem(x, wool);
-        }
-        InventoryUtil.fillEmptySlots(inv);
-        return inv;
 
-    }
+
 
 }

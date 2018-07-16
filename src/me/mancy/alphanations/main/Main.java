@@ -1,10 +1,10 @@
 package me.mancy.alphanations.main;
 
 import me.mancy.alphanations.commands.BaseCommand;
-import me.mancy.alphanations.listeners.AdminGUIHandler;
-import me.mancy.alphanations.listeners.ChatHandler;
-import me.mancy.alphanations.listeners.NationSelectHandler;
-import me.mancy.alphanations.listeners.TownJoinHandler;
+import me.mancy.alphanations.listeners.menus.AdminMainGUIHandler;
+import me.mancy.alphanations.listeners.misc.ChatHandler;
+import me.mancy.alphanations.listeners.menus.NationSelectHandler;
+import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -92,7 +92,7 @@ public class Main extends JavaPlugin {
     private void registerEvents() {
         new NationManager(this);
         new NationSelectHandler(this);
-        new AdminGUIHandler(this);
+        new AdminMainGUIHandler(this);
         new ChatHandler(this);
         new TownJoinHandler(this);
     }

@@ -1,6 +1,6 @@
-package me.mancy.alphanations.listeners;
+package me.mancy.alphanations.listeners.menus;
 
-import me.mancy.alphanations.gui.AdminNationGUI;
+import me.mancy.alphanations.gui.AdminMainGUI;
 import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
@@ -54,7 +54,7 @@ public class NationSelectHandler implements Listener {
             }
         }
         if (selectedNation == null) return;
-        AdminNationGUI.getAdminEditGUI(selectedNation);
+        AdminMainGUI.getAdminEditGUI(selectedNation);
     }
 
 }
