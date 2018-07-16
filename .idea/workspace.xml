@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6904d632-42bb-4c11-afa0-fd007c86b00e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/utils/InventoryUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/NationSelectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/NationSelectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownJoinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownJoinHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +47,7 @@
       <file leaf-file-name="AdminNationGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="943">
               <caret line="49" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -79,7 +71,7 @@
       <file leaf-file-name="AdminGUIHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
+            <state relative-caret-position="92">
               <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,12 +97,10 @@
       <file leaf-file-name="Nation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="83" column="34" lean-forward="true" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+            <state relative-caret-position="1403">
+              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1930#1931#0" expanded="true" />
-                <element signature="e#1963#1964#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,8 +109,13 @@
       <file leaf-file-name="TownCreateHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
+            <state relative-caret-position="189">
               <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownDeleteHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -137,8 +132,8 @@
       <file leaf-file-name="TownJoinHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownJoinHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+            <state relative-caret-position="460">
+              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,10 +171,10 @@
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/NationSelectHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownDeleteHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownJoinHandler.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" />
       </list>
     </option>
   </component>
@@ -195,7 +190,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,8 +254,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,7 +336,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -394,8 +388,6 @@
           <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -404,9 +396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1610">
           <caret line="82" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -421,9 +410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1495">
           <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -463,9 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1518">
           <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -489,8 +472,6 @@
           <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -499,9 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1794">
           <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,9 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1219">
           <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -551,9 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1357">
           <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -577,8 +549,6 @@
           <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -594,9 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1495">
           <caret line="75" column="26" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -604,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1058">
           <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -626,9 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -638,8 +599,6 @@
           <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -648,9 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -695,9 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1610">
           <caret line="82" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -705,9 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1771">
           <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,9 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -765,7 +712,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="943">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -776,26 +723,24 @@
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownDeleteHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="83" column="34" lean-forward="true" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+        <state relative-caret-position="1403">
+          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownJoinHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        <state relative-caret-position="460">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -804,7 +749,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
+        <state relative-caret-position="92">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -814,8 +759,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="189">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
