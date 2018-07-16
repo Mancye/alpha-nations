@@ -1,15 +1,20 @@
 package me.mancy.alphanations.main;
 
+import com.palmergames.bukkit.towny.object.Resident;
+import com.palmergames.bukkit.towny.object.Town;
+import com.palmergames.bukkit.towny.object.TownyUniverse;
 import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.menus.AdminMainGUIHandler;
 import me.mancy.alphanations.listeners.misc.ChatHandler;
 import me.mancy.alphanations.listeners.menus.NationSelectHandler;
 import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -82,6 +87,20 @@ public class Main extends JavaPlugin {
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
             NationManager.addNation(nation);
+
+            for (UUID uuid : nation.getMembers()) {
+                Player p = Bukkit.getPlayer(uuid);
+                Resident r = null;
+                if (p != null) {
+                    r = (Resident) p;
+                }
+                for (Town town : TownyUniverse.getDataSource().getTowns()) {
+                    if (town.getMayor().equals((Resident) p)) {
+                        nation.addTown(town);
+                    }
+                }
+            }
+
         }
     }
 
