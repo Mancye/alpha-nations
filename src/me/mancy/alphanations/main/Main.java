@@ -1,5 +1,6 @@
 package me.mancy.alphanations.main;
 
+import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
@@ -92,7 +93,11 @@ public class Main extends JavaPlugin {
                 Player p = Bukkit.getPlayer(uuid);
                 Resident r = null;
                 if (p != null) {
-                    r = (Resident) p;
+                    try {
+                        r = TownyUniverse.getDataSource().getResident(p.getName());
+                    } catch (NotRegisteredException e) {
+                        e.printStackTrace();
+                    }
                 }
                 for (Town town : TownyUniverse.getDataSource().getTowns()) {
                     if (town.getMayor().equals((Resident) p)) {
