@@ -1,8 +1,9 @@
 package me.mancy.alphanations.main;
 
 import com.palmergames.bukkit.towny.object.Town;
+import me.mancy.alphanations.utils.MessageUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -83,6 +84,14 @@ public class Nation {
     public void removeTown(Town town) {
         if (doesContainTown(town))
             this.towns.remove(town);
+    }
+
+    public void broadcast(String message) {
+        for (UUID uuid : this.getMembers()) {
+            if (Bukkit.getPlayer(uuid) != null) {
+                MessageUtil.sendMsgWithPrefix(Bukkit.getPlayer(uuid), message);
+            }
+        }
     }
 
     public List<Town> getTowns() {

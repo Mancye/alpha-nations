@@ -5,6 +5,8 @@ import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
+import me.mancy.alphanations.utils.MessageUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,7 +30,7 @@ public class NationSelectHandler implements Listener {
                 if (event.getClickedInventory().getItem(event.getSlot()).hasItemMeta() && event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) {
                     if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
                         nation.addMember(p);
-                        p.sendMessage("You have joined " + nation.getName());
+                        MessageUtil.sendMsgWithPrefix(p,ChatColor.GRAY + "You have joined " + ChatColor.GREEN + nation.getName());
                         p.closeInventory();
                     }
                 }

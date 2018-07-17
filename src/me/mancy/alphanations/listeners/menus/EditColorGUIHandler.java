@@ -1,7 +1,6 @@
 package me.mancy.alphanations.listeners.menus;
 
 import me.mancy.alphanations.gui.AdminEditColorGUI;
-import me.mancy.alphanations.gui.AdminMainGUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

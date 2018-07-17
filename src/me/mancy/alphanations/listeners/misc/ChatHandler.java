@@ -1,11 +1,8 @@
 package me.mancy.alphanations.listeners.misc;
 
 import me.mancy.alphanations.main.Main;
-import me.mancy.alphanations.managers.NationManager;
-import org.bukkit.Color;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class ChatHandler implements Listener {

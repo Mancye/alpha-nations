@@ -5,7 +5,6 @@ import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
-import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,8 +29,7 @@ public class TownCreateHandler implements Listener {
             Nation nation = NationManager.getPlayersNation(p);
 
             nation.addTown(town);
-            NationManager.broadcastToNation(nation,
-                    MessageUtil.getPrefix() + ChatColor.GRAY + "The town of " + ChatColor.GREEN + town.getName() +
+            nation.broadcast(ChatColor.GRAY + "The town of " + ChatColor.GREEN + town.getName() +
                             ChatColor.GRAY + " has joined the nation of " + ChatColor.GREEN + nation.getName());
         }
 
