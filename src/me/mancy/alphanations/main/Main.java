@@ -8,6 +8,9 @@ import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.menus.AdminMainGUIHandler;
 import me.mancy.alphanations.listeners.misc.ChatHandler;
 import me.mancy.alphanations.listeners.menus.NationSelectHandler;
+import me.mancy.alphanations.listeners.misc.JoinNation;
+import me.mancy.alphanations.listeners.towny.TownCreateHandler;
+import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
 import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.Bukkit;
@@ -119,6 +122,9 @@ public class Main extends JavaPlugin {
         new AdminMainGUIHandler(this);
         new ChatHandler(this);
         new TownJoinHandler(this);
+        new TownCreateHandler(this);
+        new TownDeleteHandler(this);
+        new JoinNation(this);
     }
 
     public void saveCustomYml(FileConfiguration ymlConfig, File ymlFile) {

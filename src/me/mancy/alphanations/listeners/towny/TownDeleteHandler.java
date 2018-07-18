@@ -2,14 +2,20 @@ package me.mancy.alphanations.listeners.towny;
 
 import com.palmergames.bukkit.towny.event.DeleteTownEvent;
 import com.palmergames.bukkit.towny.object.Town;
+import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
-public class TownDeleteHandler {
+public class TownDeleteHandler implements Listener {
     /*
     When town is deleted remove from nation
      */
+
+    public TownDeleteHandler(Main main) {
+        main.getServer().getPluginManager().registerEvents(this, main);
+    }
 
     @EventHandler
     private void handleTownDelete(DeleteTownEvent event) {
