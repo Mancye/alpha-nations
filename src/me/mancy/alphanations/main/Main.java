@@ -5,9 +5,8 @@ import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
 import me.mancy.alphanations.commands.BaseCommand;
-import me.mancy.alphanations.listeners.menus.AdminMainGUIHandler;
+import me.mancy.alphanations.listeners.menus.*;
 import me.mancy.alphanations.listeners.misc.ChatHandler;
-import me.mancy.alphanations.listeners.menus.NationSelectHandler;
 import me.mancy.alphanations.listeners.misc.JoinNation;
 import me.mancy.alphanations.listeners.towny.TownCreateHandler;
 import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
@@ -38,13 +37,13 @@ public class Main extends JavaPlugin {
         registerEvents();
         registerCommands();
         loadNations();
-        System.out.println(ChatColor.GREEN + "[alphaNATIONS] Plugin Enabled Successfully");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[alphaNATIONS] Plugin Enabled Successfully");
     }
 
     @Override
     public void onDisable() {
         saveNations();
-        System.out.println(ChatColor.RED + "[alphaNATIONS] Plugin Disabled Successfully");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[alphaNATIONS] Plugin Disabled Successfully");
     }
 
     private void saveNations() {
@@ -91,22 +90,22 @@ public class Main extends JavaPlugin {
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
             NationManager.addNation(nation);
-
+            try {
             for (UUID uuid : nation.getMembers()) {
                 Player p = Bukkit.getPlayer(uuid);
                 Resident r = null;
                 if (p != null) {
-                    try {
-                        r = TownyUniverse.getDataSource().getResident(p.getName());
-                    } catch (NotRegisteredException e) {
-                        e.printStackTrace();
-                    }
+                    r = TownyUniverse.getDataSource().getResident(p.getName());
+
                 }
                 for (Town town : TownyUniverse.getDataSource().getTowns()) {
-                    if (town.getMayor().equals((Resident) p)) {
+                    if (town.getMayor().equals(r)) {
                         nation.addTown(town);
                     }
                 }
+            }
+            } catch (NotRegisteredException e) {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "PA NATIONS ERROR: TOWNY FAILED PLUGIN SHUTTING DOWN");
             }
 
         }
@@ -117,17 +116,28 @@ public class Main extends JavaPlugin {
     }
 
     private void registerEvents() {
+        //managers
         new NationManager(this);
+
+        //menus
         new NationSelectHandler(this);
         new AdminMainGUIHandler(this);
+        new ConfirmEditGUIHandler(this);
+        new EditBlockGUIHandler(this);
+        new EditColorGUIHandler(this);
+
+        //misc
         new ChatHandler(this);
+        new JoinNation(this);
+
+        //towny
         new TownJoinHandler(this);
         new TownCreateHandler(this);
         new TownDeleteHandler(this);
-        new JoinNation(this);
+
     }
 
-    public void saveCustomYml(FileConfiguration ymlConfig, File ymlFile) {
+    private void saveCustomYml(FileConfiguration ymlConfig, File ymlFile) {
         try {
             ymlConfig.save(ymlFile);
         } catch (IOException e) {

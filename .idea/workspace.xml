@@ -7,11 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6904d632-42bb-4c11-afa0-fd007c86b00e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alphaNATIONS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/alphaNATIONS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/listeners/TownDeleteHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/listeners/TownJoinHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Nation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Nation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/managers/NationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/managers/NationManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/ConfirmEditGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/ConfirmEditGUIHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/utils/MessageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/utils/MessageUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,23 +35,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminMainGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java">
+      <file leaf-file-name="EditBlockGUIHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-142">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="276">
+              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#366#367#0" expanded="true" />
+                <element signature="e#444#445#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfirmEditGUI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java">
+      <file leaf-file-name="EditColorGUIHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="253">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -47,56 +61,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="125" column="36" lean-forward="true" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminMainGUIHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NationSelectHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TownCreateHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownCreateHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/utils/MessageUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="-302">
+              <caret line="103" column="21" lean-forward="true" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,12 +73,48 @@
       <file leaf-file-name="JoinNation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="322">
+              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#421#422#0" expanded="true" />
-                <element signature="e#488#489#0" expanded="true" />
+                <element signature="e#475#476#0" expanded="true" />
+                <element signature="e#553#554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/ChatHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfirmEditGUIHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/ConfirmEditGUIHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminMainGUIHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,22 +123,32 @@
       <file leaf-file-name="TownDeleteHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="322">
               <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#454#455#0" expanded="true" />
-                <element signature="e#473#474#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TownJoinHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java">
+      <file leaf-file-name="NationSelectHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="781">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminEditBlockGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/commands/Base.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/commands/RemoveNation.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/commands/AddNation.java" />
-        <option value="$PROJECT_DIR$/plugin.yml" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/ChatHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/utils/InventoryUtil.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/NationSelectHandler.java" />
@@ -173,16 +184,9 @@
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/TownCreateHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminGUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminNationGUI.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/AdminMainGUIHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/ChatHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownCreateHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java" />
@@ -190,17 +194,24 @@
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/managers/NationManager.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/utils/MessageUtil.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java" />
-        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java" />
         <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/ConfirmEditGUIHandler.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" />
+        <option value="$PROJECT_DIR$/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" />
+        <option value="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="167" />
-    <option name="y" value="315" />
-    <option name="width" value="1680" />
-    <option name="height" value="1027" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -208,88 +219,87 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="commands" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="listeners" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="listeners" type="462c0819:PsiDirectoryNode" />
               <item name="menus" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="listeners" type="462c0819:PsiDirectoryNode" />
               <item name="misc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="listeners" type="462c0819:PsiDirectoryNode" />
               <item name="towny" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="managers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="alpha-nations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-nations" type="462c0819:PsiDirectoryNode" />
+              <item name="alphaNATIONS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alphaNATIONS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="alphanations" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
@@ -298,12 +308,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Stephen Carras/workspace/alphaNATIONS/src/me/mancy/alphanations/main/Main.java" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Towny.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
@@ -377,11 +389,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.35102925" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -392,21 +404,40 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22832723" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14653361" />
+      <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Learn" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32925472" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32925472" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22832723" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -418,13 +449,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1518">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -609,28 +633,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitattributes" />
-    <entry file="file://$PROJECT_DIR$/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminEditBlockGUIHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -639,68 +646,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        <state relative-caret-position="414">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownCreateHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="437">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="414">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/ChatHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/managers/NationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/utils/InventoryUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
+        <state relative-caret-position="572">
           <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -710,62 +706,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/utils/MessageUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="690">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java">
+    <entry file="file://$PROJECT_DIR$/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#488#489#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="138">
+          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="125" column="36" lean-forward="true" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
+        <state relative-caret-position="207">
+          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="253">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#454#455#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownCreateHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditBlockGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="322">
+          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -774,8 +760,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        <state relative-caret-position="781">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownDeleteHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/ConfirmEditGUIHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/ChatHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditBlockGUIHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-302">
+          <caret line="103" column="21" lean-forward="true" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -784,28 +841,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/AdminMainGUIHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="480">
+          <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-142">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

@@ -1,3 +1,4 @@
+depend: [Towny]
 main: me.mancy.alphanations.main.Main
 name: alphaNATIONS
 author: Mancy

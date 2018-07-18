@@ -18,7 +18,7 @@ public class AdminMainGUI {
          Edit Block   Edit Name   Edit Color   Delete Nation
          Grass Block   Nametag    White wool   Barrier
          */
-        Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation: " + nationToEdit.getName());
+        final Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation: " + nationToEdit.getName());
 
         ItemStack editBlock = new ItemStack(Material.GRASS);
         ItemMeta editBlockMeta = editBlock.getItemMeta();

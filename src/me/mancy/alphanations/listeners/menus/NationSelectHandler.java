@@ -6,6 +6,7 @@ import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
+import org.apache.logging.log4j.message.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,7 +42,7 @@ public class NationSelectHandler implements Listener {
 
     @EventHandler
     private void onAdminSelect(InventoryClickEvent event) {
-        if  (!(event.getInventory().equals(NationSelectionGUI.getAdminNationSelectionInventory()))) return;
+        if  (!(event.getInventory().getName().contains("Choose a nation to edit"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         event.setCancelled(true);
         Player p = (Player) event.getWhoClicked();
@@ -51,12 +52,13 @@ public class NationSelectHandler implements Listener {
                 if (event.getClickedInventory().getItem(event.getSlot()).hasItemMeta() && event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) {
                     if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
                         selectedNation = nation;
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Now editing nation: " + ChatColor.RED + nation.getName());
                     }
                 }
             }
         }
         if (selectedNation == null) return;
-        AdminMainGUI.getAdminEditGUI(selectedNation);
+        p.openInventory(AdminMainGUI.getAdminEditGUI(selectedNation));
     }
 
 }
