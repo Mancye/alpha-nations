@@ -21,7 +21,7 @@ public class NationSelectHandler implements Listener {
 
     @EventHandler
     private void onSelect(InventoryClickEvent event) {
-        if  (!(event.getInventory().equals(NationSelectionGUI.getPlayerNationSelectionInventory()))) return;
+        if  (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("choose a nation"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         event.setCancelled(true);
         Player p = (Player) event.getWhoClicked();

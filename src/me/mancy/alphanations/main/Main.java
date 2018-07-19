@@ -14,6 +14,7 @@ import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -60,6 +61,8 @@ public class Main extends JavaPlugin {
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ". item", n.getItem().getType().name());
                 saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". capitallocation", n.getCapital());
+                saveCustomYml(nationsConfig, nationsFile);
                 x++;
             } else {
                 break;
@@ -77,25 +80,27 @@ public class Main extends JavaPlugin {
         int amtNations = nationsConfig.getInt("Amount of Nations");
         for (int x = 1; x <= amtNations; x++) {
             final String name = nationsConfig.getString(x + ". name");
-            final List<UUID> members = new ArrayList<>();
+            final List<String> members = new ArrayList<>();
             for (String strUUID : nationsConfig.getStringList(x + ". members")) {
                 UUID uuid = UUID.fromString(strUUID);
-                if (!members.contains(uuid)) members.add(uuid);
+                if (!members.contains(uuid.toString())) members.add(uuid.toString());
             }
             if (!nationsConfig.contains(x + ". menudescription")) nationsConfig.set(x + ". menudescription", null);
             final List<String> menuDescription = nationsConfig.getStringList(x + ". menudescription");
             if (!nationsConfig.contains(x + ". item")) nationsConfig.set(x + ". item", null);
             final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ". item")));
-            Nation nation = new Nation(name, members);
+            if (!nationsConfig.contains(x + ". capitallocation")) nationsConfig.set(x + ". capitallocation", null);
+            final Location capital = (Location) nationsConfig.get(x + ". capitallocation");
+            Nation nation = new Nation(name, members, capital);
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
             NationManager.addNation(nation);
             try {
-            for (UUID uuid : nation.getMembers()) {
-                Player p = Bukkit.getPlayer(uuid);
+            for (String pUUID : nation.getMembers()) {
+                Player player = Bukkit.getPlayer(UUID.fromString(pUUID));
                 Resident r = null;
-                if (p != null) {
-                    r = TownyUniverse.getDataSource().getResident(p.getName());
+                if (player != null) {
+                    r = TownyUniverse.getDataSource().getResident(player.getName());
 
                 }
                 for (Town town : TownyUniverse.getDataSource().getTowns()) {

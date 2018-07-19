@@ -5,6 +5,7 @@ import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,7 +23,7 @@ public class BaseCommand implements CommandExecutor {
                 if (sender.hasPermission("nations.")) {
                     if (NationManager.getPlayersNation(p) == null) {
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Select a nation to join");
-                        p.openInventory(NationSelectionGUI.getAdminNationSelectionInventory());
+                        p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
                         return true;
                     } else {
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "Sorry you are already in a nation");
@@ -51,19 +52,35 @@ public class BaseCommand implements CommandExecutor {
                             MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "No nations found");
                             return true;
                         }
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nations:");
                         for (Nation nation : NationManager.getNationList()) {
-                            sender.sendMessage("- " + nation.getName());
+                            p.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.GRAY + nation.getName());
                         }
                         return true;
                     } else {
                         MessageUtil.sendNoPermissionMsg(p);
                         return false;
                     }
-                } else if (args[0].equalsIgnoreCase("admin")) {
+                } else if (args[0].equalsIgnoreCase("edit")) {
                     if (sender.hasPermission("nations.admin") || sender.hasPermission("nations.*")) {
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Select a nation to edit");
                         p.openInventory(NationSelectionGUI.getAdminNationSelectionInventory());
                         return true;
+                    }
+                } else if (args[0].equalsIgnoreCase("capital")) {
+                    if (sender.hasPermission("nations.capital") || sender.hasPermission("nations.*")) {
+                        if (NationManager.getPlayersNation(p) != null) {
+                            p.teleport(NationManager.getPlayersNation(p).getCapital());
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Teleported to your nation's capital!");
+                            return true;
+                        } else {
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "You must join a nation first!");
+                            p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
+                            return false;
+                        }
+                    } else {
+                        MessageUtil.sendNoPermissionMsg(p);
+                        return false;
                     }
                 }
             } else if (args.length == 2) {
@@ -76,7 +93,7 @@ public class BaseCommand implements CommandExecutor {
 
                     if (args[0].equalsIgnoreCase("add")) {
 
-                        NationManager.addNation(new Nation(name, null));
+                        NationManager.addNation(new Nation(name, null, p.getWorld().getHighestBlockAt(p.getLocation()).getLocation()));
                         if (NationManager.doesNationExist(name)) {
                             MessageUtil.sendMsgWithPrefix(p, ChatColor.GREEN + name + ChatColor.GRAY + " Nation Has Been Created Successfully");
                             return true;
@@ -94,6 +111,14 @@ public class BaseCommand implements CommandExecutor {
                         } else {
                             MessageUtil.sendMsgWithPrefix(p, "An error occurred while removing this nation! This nation already exists!");
                             return false;
+                        }
+                    } else if (args[0].equalsIgnoreCase("setcapital")) {
+                        if (NationManager.getNation(args[1]) != null) {
+                            Location capital = p.getWorld().getHighestBlockAt(p.getLocation()).getLocation();
+                            NationManager.getNation(args[1]).setCapital(capital);
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Successfully set nation's capital at your current location");
+                        } else {
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nation not found, see a list of available nations with " + ChatColor.GREEN + "/nations list");
                         }
                     }
 

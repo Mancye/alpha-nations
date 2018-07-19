@@ -1,8 +1,10 @@
 package me.mancy.alphanations.main;
 
 import com.palmergames.bukkit.towny.object.Town;
+import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -12,19 +14,20 @@ import java.util.List;
 import java.util.UUID;
 
 public class Nation {
-    private Main plugin;
 
-    private String name = "";
-    private List<UUID> members = new ArrayList<>();
+    private String name;
+    private List<String> members;
     private List<String> menuDescription = new ArrayList<>();
     private List<Town> towns = new ArrayList<>();
+    private Location capital;
 
     ItemStack item = new ItemStack(Material.BARRIER);
 
-    public Nation(String name, List<UUID> members) {
+    public Nation(String name, List<String> members, Location capital) {
         this.name = name;
         if (members == null) members = new ArrayList<>();
         this.members = members;
+        this.capital = capital;
     }
     public ItemStack getItem() {
         return item;
@@ -38,24 +41,33 @@ public class Nation {
         return name;
     }
 
+    public Location getCapital() {
+        return this.capital;
+    }
+
+    public void setCapital(Location loc) {
+        if (loc != null)
+        this.capital = loc;
+    }
+
     public void setName(String newName) {
         this.name = newName;
     }
 
-    public List<UUID> getMembers() {
+    public List<String> getMembers() {
         return members;
     }
 
     public void addMember(Player player) {
         if (player == null) return;
-        if  (members.contains(player.getUniqueId())) return;
-        members.add(player.getUniqueId());
+        if  (members.contains(player.getUniqueId().toString())) return;
+        members.add(player.getUniqueId().toString());
     }
 
     public void removeMember(Player player) {
         if (player == null) return;
-        if (members.contains(player.getUniqueId())) {
-            members.remove(player);
+        if (members.contains(player.getUniqueId().toString())) {
+            members.remove(player.getUniqueId().toString());
         }
     }
 
@@ -87,9 +99,9 @@ public class Nation {
     }
 
     public void broadcast(String message) {
-        for (UUID uuid : this.getMembers()) {
-            if (Bukkit.getPlayer(uuid) != null) {
-                MessageUtil.sendMsgWithPrefix(Bukkit.getPlayer(uuid), message);
+        for (String p : this.getMembers()) {
+            if (Bukkit.getPlayer(UUID.fromString(p)) != null) {
+                MessageUtil.sendMsgWithPrefix(Bukkit.getPlayer(UUID.fromString(p)), message);
             }
         }
     }
@@ -97,4 +109,5 @@ public class Nation {
     public List<Town> getTowns() {
         return this.towns;
     }
+
 }

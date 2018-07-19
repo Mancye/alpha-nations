@@ -82,7 +82,7 @@ public class NationManager {
         Nation nation;
 
         for (Nation n : nationList) {
-            if (n.getMembers().contains(uuid)) {
+            if (n.getMembers().contains(uuid.toString())) {
                 nation = n;
                 return nation;
             }

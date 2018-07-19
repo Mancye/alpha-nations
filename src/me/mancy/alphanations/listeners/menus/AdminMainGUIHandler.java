@@ -34,7 +34,6 @@ public class AdminMainGUIHandler implements Listener {
         event.setCancelled(true);
         String nationName = ChatColor.stripColor(event.getInventory().getName().substring(20));
         Nation nation = NationManager.getNation(nationName);
-        p.sendMessage("DEBUG: Nation name found = " + nationName);
         switch (event.getSlot()) {
             case 10:
                 p.openInventory(AdminEditBlockGUI.getEditBlockInventory());
@@ -65,13 +64,14 @@ public class AdminMainGUIHandler implements Listener {
     @EventHandler
     private void handleEditNameInput(AsyncPlayerChatEvent event) {
         if (!playersEditingNames.containsKey(event.getPlayer())) return;
-        event.getPlayer().sendMessage("You are in the editing names ");
         Nation nation = playersEditingNames.get(event.getPlayer());
         String oldName = nation.getName();
         String newName = ChatColor.stripColor(event.getMessage());
+        MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Successfully changed name to " + ChatColor.GREEN + newName);
         nation.setName(newName);
         nation.broadcast(ChatColor.GRAY  + "Your nation's name has been changed from " + ChatColor.GREEN + oldName + ChatColor.GRAY + " To " + ChatColor.GRAY + newName);
         playersEditingNames.remove(event.getPlayer());
+        event.setCancelled(true);
     }
 
 }
