@@ -12,9 +12,9 @@ import java.util.List;
 public class InventoryUtil {
 
     public static void fillEmptySlots(Inventory inv) {
-        ItemStack emptySlot = new ItemStack(Material.STAINED_GLASS_PANE);
+        ItemStack emptySlot = new ItemStack(Material.WHITE_STAINED_GLASS_PANE);
         ItemMeta emptyMeta = emptySlot.getItemMeta();
-        emptyMeta.setDisplayName("");
+        emptyMeta.setDisplayName(" ");
         emptySlot.setItemMeta(emptyMeta);
 
         for (int i = 0; i < inv.getSize(); i++) {

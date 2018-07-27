@@ -1,6 +1,5 @@
 package me.mancy.alphanations.listeners.menus;
 
-import me.mancy.alphanations.gui.AdminEditColorGUI;
 import me.mancy.alphanations.main.Main;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +13,6 @@ public class EditColorGUIHandler implements Listener {
 
     @EventHandler
     private void handleEditColor(InventoryClickEvent event) {
-        if (!event.getClickedInventory().equals(AdminEditColorGUI.getEditColorInventory()));
         // Get wool color
         // Set nation color to wool color
     }

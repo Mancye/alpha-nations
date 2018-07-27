@@ -1,4 +1,5 @@
 depend: [Towny]
+api-version: 1.13
 main: me.mancy.alphanations.main.Main
 name: alphaNATIONS
 author: Mancy

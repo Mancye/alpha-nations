@@ -32,7 +32,7 @@ public class AdminMainGUI {
         editName.setItemMeta(editNameMeta);
         mainAdminGUI.setItem(12, editName);
 
-        ItemStack editColor = new ItemStack(Material.WOOL);
+        ItemStack editColor = new ItemStack(Material.WHITE_WOOL);
         ItemMeta editColorMeta = editBlock.getItemMeta();
         editColorMeta.setDisplayName(ChatColor.GREEN + "Edit Color");
         editColor.setItemMeta(editColorMeta);
@@ -40,7 +40,7 @@ public class AdminMainGUI {
 
         ItemStack deleteNation = new ItemStack(Material.BARRIER);
         ItemMeta deleteMeta = deleteNation.getItemMeta();
-        deleteMeta.setDisplayName(ChatColor.RED + "Delete A Nation");
+        deleteMeta.setDisplayName(ChatColor.RED + "Delete This Nation");
         deleteNation.setItemMeta(deleteMeta);
         mainAdminGUI.setItem(16, deleteNation);
 

@@ -10,21 +10,21 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/spigot-1.12.2.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Towny.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/spigot-1.12.2.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Towny.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/spigot-latest.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Documents/spigot-latest.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

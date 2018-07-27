@@ -3,6 +3,8 @@ package me.mancy.alphanations.managers;
 import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
+import me.mancy.alphanations.utils.MessageUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -61,10 +63,20 @@ public class NationManager {
     public static void removeNation(String nationName) {
         if (nationName == null) return;
         Nation nationToRemove = null;
+        List<Player> membersToRemove = new ArrayList<>();
         for (Nation nation : nationList) {
             if (nation.getName().equalsIgnoreCase(nationName)) {
                 nationToRemove = nation;
+                nationToRemove.broadcast(ChatColor.RED + "Your nation has been deleted please use /nation or /n to select a new one!");
+                for (String uuidStr : nationToRemove.getMembers()) {
+                    UUID uuid = UUID.fromString(uuidStr);
+                    Player p = Bukkit.getPlayer(uuid);
+                    membersToRemove.add(p);
+                }
             }
+        }
+        for (Player p : membersToRemove) {
+            nationToRemove.removeMember(p);
         }
         if (nationToRemove != null) nationList.remove(nationToRemove);
     }
@@ -72,6 +84,16 @@ public class NationManager {
     public static void removeNation(Nation nation) {
         if (!nationList.contains(nation)) return;
         if (nation != null) {
+            List<Player> membersToRemove = new ArrayList<>();
+            nation.broadcast(ChatColor.RED + "Your nation has been deleted please use /nation or /n to select a new one!");
+            for (String uuidStr : nation.getMembers()) {
+                UUID uuid = UUID.fromString(uuidStr);
+                Player p = Bukkit.getPlayer(uuid);
+                membersToRemove.add(p);
+            }
+            for (Player p : membersToRemove) {
+                nation.removeMember(p);
+            }
             nationList.remove(nation);
         }
     }

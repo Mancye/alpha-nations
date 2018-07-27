@@ -2,9 +2,11 @@ package me.mancy.alphanations.listeners.menus;
 
 import me.mancy.alphanations.gui.AdminEditBlockGUI;
 import me.mancy.alphanations.gui.AdminEditColorGUI;
+import me.mancy.alphanations.gui.ConfirmEditGUI;
 import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
+import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.ChatColor;
@@ -37,6 +39,7 @@ public class AdminMainGUIHandler implements Listener {
         switch (event.getSlot()) {
             case 10:
                 p.openInventory(AdminEditBlockGUI.getEditBlockInventory());
+                NationEditorManager.playersEditType.put(p, "BLOCK");
                 break;
             case 12:
                 if (event.getClickedInventory().getItem(event.getSlot()) != null) {
@@ -50,9 +53,12 @@ public class AdminMainGUIHandler implements Listener {
                 break;
             case 14:
                 p.openInventory(AdminEditColorGUI.getEditColorInventory());
+                NationEditorManager.playersEditType.put(p, "COLOR");
                 break;
             case 16:
-                p.openInventory(NationSelectionGUI.getAdminNationDeleteInventory());
+                p.openInventory(ConfirmEditGUI.getConfirmMenu());
+                NationEditorManager.playersEditType.put(p, "DELETE");
+                NationEditorManager.nationsToDelete.add(nation);
                 break;
         }
     }
@@ -67,9 +73,9 @@ public class AdminMainGUIHandler implements Listener {
         Nation nation = playersEditingNames.get(event.getPlayer());
         String oldName = nation.getName();
         String newName = ChatColor.stripColor(event.getMessage());
-        MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Successfully changed name to " + ChatColor.GREEN + newName);
-        nation.setName(newName);
-        nation.broadcast(ChatColor.GRAY  + "Your nation's name has been changed from " + ChatColor.GREEN + oldName + ChatColor.GRAY + " To " + ChatColor.GRAY + newName);
+        NationEditorManager.nameChanges.put(nation, newName);
+        NationEditorManager.playersEditType.put(event.getPlayer(), "NAME");
+        event.getPlayer().openInventory(ConfirmEditGUI.getConfirmMenu());
         playersEditingNames.remove(event.getPlayer());
         event.setCancelled(true);
     }

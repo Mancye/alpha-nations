@@ -26,11 +26,4 @@ public class NationSelectionGUI {
         return selectionGUI;
     }
 
-    public static Inventory getAdminNationDeleteInventory() {
-        final String invName = ChatColor.RED + "Choose a nation to delete";
-        Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
-        setupNationSelectInv(selectionGUI);
-        return selectionGUI;
-    }
-
 }

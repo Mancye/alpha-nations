@@ -4,6 +4,7 @@ import me.mancy.alphanations.gui.AdminMainGUI;
 import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
+import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.apache.logging.log4j.message.Message;
@@ -21,7 +22,8 @@ public class NationSelectHandler implements Listener {
 
     @EventHandler
     private void onSelect(InventoryClickEvent event) {
-        if  (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("choose a nation"))) return;
+        if (event.getClickedInventory() == null) return;
+        if  (!(ChatColor.stripColor(event.getClickedInventory().getTitle()).equalsIgnoreCase("choose a nation"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         event.setCancelled(true);
         Player p = (Player) event.getWhoClicked();
@@ -42,6 +44,7 @@ public class NationSelectHandler implements Listener {
 
     @EventHandler
     private void onAdminSelect(InventoryClickEvent event) {
+        if (event.getClickedInventory() == null) return;
         if  (!(event.getInventory().getName().contains("Choose a nation to edit"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         event.setCancelled(true);
@@ -53,6 +56,7 @@ public class NationSelectHandler implements Listener {
                     if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
                         selectedNation = nation;
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Now editing nation: " + ChatColor.RED + nation.getName());
+                        NationEditorManager.setPlayersNation(p, nation);
                     }
                 }
             }
