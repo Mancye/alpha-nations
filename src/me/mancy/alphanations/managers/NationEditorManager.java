@@ -1,6 +1,7 @@
 package me.mancy.alphanations.managers;
 
 import me.mancy.alphanations.main.Nation;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +16,7 @@ public class NationEditorManager {
     private static final Map<Player, Nation> nationEditing = new HashMap<>();
     public static final Map<Player, String> playersEditType = new HashMap<>();
     public static final Map<Nation, ItemStack> blockChanges = new HashMap<>();
-    public static final Map<Nation, Color> colorChanges = new HashMap<>();
+    public static final Map<Nation, ChatColor> colorChanges = new HashMap<>();
     public static final Map<Nation, String> nameChanges = new HashMap<>();
     public static final List<Nation> nationsToDelete = new ArrayList<>();
 

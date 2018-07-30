@@ -4,6 +4,7 @@ import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,8 +21,8 @@ public class Nation {
     private List<String> menuDescription = new ArrayList<>();
     private List<Town> towns = new ArrayList<>();
     private Location capital;
-
-    ItemStack item = new ItemStack(Material.BARRIER);
+    private ChatColor color;
+    private ItemStack item;
 
     public Nation(String name, List<String> members, Location capital) {
         this.name = name;
@@ -34,6 +35,9 @@ public class Nation {
     }
 
     public void setItem(ItemStack item) {
+        if (item == null) {
+            this.item = new ItemStack(Material.BARRIER);
+        }
         this.item = item;
     }
 
@@ -51,6 +55,10 @@ public class Nation {
     }
 
     public void setName(String newName) {
+        if (newName == null) {
+            this.name = "Undefined";
+            return;
+        }
         this.name = newName;
     }
 
@@ -103,6 +111,18 @@ public class Nation {
             if (Bukkit.getPlayer(UUID.fromString(p)) != null) {
                 MessageUtil.sendMsgWithPrefix(Bukkit.getPlayer(UUID.fromString(p)), message);
             }
+        }
+    }
+
+    public ChatColor getColor() {
+        return this.color;
+    }
+
+    public void setColor(ChatColor color) {
+        if (color == null) {
+            this.color = ChatColor.WHITE;
+        } else {
+            this.color = color;
         }
     }
 
