@@ -1,18 +1,17 @@
 package me.mancy.alphanations.listeners.menus;
 
+import com.nametagedit.plugin.NametagEdit;
 import me.mancy.alphanations.gui.AdminMainGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.scoreboard.*;
 
 public class NationSelectHandler implements Listener {
 
@@ -34,16 +33,18 @@ public class NationSelectHandler implements Listener {
                     if (ChatColor.stripColor(event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName()).equalsIgnoreCase(nation.getName())) {
                         nation.addMember(p);
                         MessageUtil.sendMsgWithPrefix(p,ChatColor.GRAY + "You have joined " + ChatColor.GREEN + nation.getName());
-
-                        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
-                        Team team = board.getTeam("team");
-
-                        team.setPrefix(nation.getColor() + "◀");
-                        team.setSuffix(nation.getColor() + "▶");
-                        for (Player on : Bukkit.getServer().getOnlinePlayers()) {
-                            team.addPlayer(on);
+                        String prefix;
+                        String suffix;
+                        if (NametagEdit.getApi().getNametag(p) != null) {
+                            prefix = NametagEdit.getApi().getNametag(p).getPrefix().substring(0, 9) + NationManager.getPlayersNation(p).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                            suffix = NationManager.getPlayersNation(p).getColor() + "▶";
+                        } else {
+                            prefix = NationManager.getPlayersNation(p).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                            suffix = NationManager.getPlayersNation(p).getColor() + "▶";
                         }
-                        p.setScoreboard(board);
+                        p.performCommand("nte player " + p.getName() + " clear");
+                        p.performCommand("nte player " + p.getName() + " prefix " + prefix);
+                        p.performCommand("nte player " + p.getName() + " suffix " + suffix);
                         p.closeInventory();
                     }
                 }
