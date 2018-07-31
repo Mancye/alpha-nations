@@ -14,13 +14,13 @@ public class ConfirmEditGUI {
     public static Inventory getConfirmMenu() {
         Inventory menu = Bukkit.createInventory(null, 27, ChatColor.RED + "Confirm Your Changes");
 
-        ItemStack confirm = new ItemStack(Material.GREEN_WOOL);
+        ItemStack confirm = new ItemStack(Material.WOOL);
         ItemMeta confirmMeta = confirm.getItemMeta();
         confirmMeta.setDisplayName(ChatColor.GREEN + "CONFIRM");
         confirm.setItemMeta(confirmMeta);
         menu.setItem(11, confirm);
 
-        ItemStack cancel = new ItemStack(Material.RED_WOOL);
+        ItemStack cancel = new ItemStack(Material.WOOL);
         ItemMeta cancelMeta = cancel.getItemMeta();
         cancelMeta.setDisplayName(ChatColor.RED + "CANCEL");
         cancel.setItemMeta(cancelMeta);

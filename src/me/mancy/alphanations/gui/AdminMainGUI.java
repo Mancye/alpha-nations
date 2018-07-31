@@ -32,7 +32,7 @@ public class AdminMainGUI {
         editName.setItemMeta(editNameMeta);
         mainAdminGUI.setItem(12, editName);
 
-        ItemStack editColor = new ItemStack(Material.WHITE_WOOL);
+        ItemStack editColor = new ItemStack(Material.WOOL);
         ItemMeta editColorMeta = editBlock.getItemMeta();
         editColorMeta.setDisplayName(ChatColor.GREEN + "Edit Color");
         editColor.setItemMeta(editColorMeta);

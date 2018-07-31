@@ -63,7 +63,7 @@ public class NationSelectHandler implements Listener {
         for (Nation nation : NationManager.getNationList()) {
             if (event.getClickedInventory().getItem(event.getSlot()) != null) {
                 if (event.getClickedInventory().getItem(event.getSlot()).hasItemMeta() && event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) {
-                    if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
+                    if (ChatColor.stripColor(event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName()).equalsIgnoreCase(nation.getName())) {
                         selectedNation = nation;
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Now editing nation: " + ChatColor.RED + nation.getName());
                         NationEditorManager.setPlayersNation(p, nation);

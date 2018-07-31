@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/spigot-api-latest.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Towny.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Towny.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/spigot-api-1.12.2-R0.1-SNAPSHOT-shaded-b1647.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

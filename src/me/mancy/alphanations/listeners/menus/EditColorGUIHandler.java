@@ -26,6 +26,7 @@ public class EditColorGUIHandler implements Listener {
         if (event.getClickedInventory().getItem(event.getSlot()) == null) return;
         if (!event.getClickedInventory().getItem(event.getSlot()).hasItemMeta()) return;
         if (!event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) return;
+        if (NationEditorManager.getPlayersNation((Player) event.getWhoClicked()) == null) return;
 
         switch (event.getSlot()) {
             case 0: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.RED);
