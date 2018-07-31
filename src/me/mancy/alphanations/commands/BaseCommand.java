@@ -63,7 +63,6 @@ public class BaseCommand implements CommandExecutor {
                     }
                 } else if (args[0].equalsIgnoreCase("edit")) {
                     if (sender.hasPermission("nations.admin") || sender.hasPermission("nations.*")) {
-                        MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Select a nation to edit");
                         p.openInventory(NationSelectionGUI.getAdminNationSelectionInventory());
                         return true;
                     }

@@ -31,7 +31,10 @@ public class Nation {
         this.capital = capital;
     }
     public ItemStack getItem() {
-        return item;
+        if (this.item == null) {
+            this.item = new ItemStack(Material.BARRIER);
+        }
+        return this.item;
     }
 
     public void setItem(ItemStack item) {
@@ -63,6 +66,9 @@ public class Nation {
     }
 
     public List<String> getMembers() {
+        if (this.members == null) {
+            this.menuDescription = new ArrayList<>();
+        }
         return members;
     }
 
@@ -84,6 +90,9 @@ public class Nation {
     }
 
     public List<String> getMenuDescription() {
+        if (this.menuDescription == null) {
+            this.menuDescription = new ArrayList<>();
+        }
         return this.menuDescription;
     }
 
@@ -97,6 +106,7 @@ public class Nation {
     }
 
     public void addTown(Town town) {
+        if (town == null) return;
         if (doesContainTown(town)) removeTown(town);
         this.towns.add(town);
     }
@@ -115,6 +125,9 @@ public class Nation {
     }
 
     public ChatColor getColor() {
+        if (this.color == null) {
+            this.color = ChatColor.WHITE;
+        }
         return this.color;
     }
 

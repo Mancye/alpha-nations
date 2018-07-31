@@ -1,18 +1,18 @@
 package me.mancy.alphanations.listeners.menus;
 
 import me.mancy.alphanations.gui.AdminMainGUI;
-import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
-import org.apache.logging.log4j.message.Message;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.scoreboard.*;
 
 public class NationSelectHandler implements Listener {
 
@@ -31,9 +31,19 @@ public class NationSelectHandler implements Listener {
         for (Nation nation : NationManager.getNationList()) {
             if (event.getClickedInventory().getItem(event.getSlot()) != null) {
                 if (event.getClickedInventory().getItem(event.getSlot()).hasItemMeta() && event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) {
-                    if (event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName().contains(nation.getName())) {
+                    if (ChatColor.stripColor(event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName()).equalsIgnoreCase(nation.getName())) {
                         nation.addMember(p);
                         MessageUtil.sendMsgWithPrefix(p,ChatColor.GRAY + "You have joined " + ChatColor.GREEN + nation.getName());
+
+                        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+                        Team team = board.getTeam("team");
+
+                        team.setPrefix(nation.getColor() + "◀");
+                        team.setSuffix(nation.getColor() + "▶");
+                        for (Player on : Bukkit.getServer().getOnlinePlayers()) {
+                            team.addPlayer(on);
+                        }
+                        p.setScoreboard(board);
                         p.closeInventory();
                     }
                 }

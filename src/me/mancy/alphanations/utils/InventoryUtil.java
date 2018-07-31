@@ -31,12 +31,20 @@ public class InventoryUtil {
             if (nation.getItem() == null) nationItem = new ItemStack(Material.BARRIER);
             ItemMeta nationMeta = nationItem.getItemMeta();
             List<String> nationLore = nation.getMenuDescription();
-            nationMeta.setDisplayName(nation.getName());
+            nationMeta.setDisplayName(nation.getColor() + nation.getName());
             nationMeta.setLore(nationLore);
             nationItem.setItemMeta(nationMeta);
             inv.setItem(slot, nationItem);
             slot++;
         }
+    }
+
+    public static void addButton(Inventory inv, Material material, String name) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        inv.addItem(item);
     }
 
 }

@@ -1,11 +1,11 @@
 package me.mancy.alphanations.listeners.menus;
 
-import me.mancy.alphanations.gui.AdminEditBlockGUI;
+import me.mancy.alphanations.gui.ConfirmEditGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.utils.MessageUtil;
-import org.apache.logging.log4j.message.FormattedMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,11 +15,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitScheduler;
 
 public class EditBlockGUIHandler implements Listener {
-
+    private Main plugin;
     public EditBlockGUIHandler(Main main) {
-        main.getServer().getPluginManager().registerEvents(this, main);
+        this.plugin = main;
+        main.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
@@ -41,9 +43,14 @@ public class EditBlockGUIHandler implements Listener {
         if (!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase("Set Nation's Block")) return;
         if (event.getPlayer() == null) return;
         Nation n = NationEditorManager.getPlayersNation((Player)event.getPlayer());
-        if (event.getInventory().getItem(4) != null)
-        n.setItem(event.getInventory().getItem(4));
-        MessageUtil.sendMsgWithPrefix((Player)event.getPlayer(),ChatColor.GRAY + "Set nation's block to " + event.getInventory().getItem(4).getType().name());
+        if (event.getInventory().getItem(4) != null) {
+            NationEditorManager.blockChanges.put(n, event.getInventory().getItem(4));
+            BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+            scheduler.scheduleSyncDelayedTask(plugin, () -> event.getPlayer().openInventory(ConfirmEditGUI.getConfirmMenu()), 5L);
+        } else {
+            MessageUtil.sendMsgWithPrefix((Player) event.getPlayer(), ChatColor.RED + "No block set!");
+        }
+
     }
 
     @EventHandler

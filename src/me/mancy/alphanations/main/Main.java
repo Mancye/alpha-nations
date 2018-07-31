@@ -6,7 +6,6 @@ import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
 import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.menus.*;
-import me.mancy.alphanations.listeners.misc.ChatHandler;
 import me.mancy.alphanations.listeners.misc.JoinNation;
 import me.mancy.alphanations.listeners.towny.TownCreateHandler;
 import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
@@ -63,6 +62,9 @@ public class Main extends JavaPlugin {
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ". capitallocation", n.getCapital());
                 saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". color", n.getColor().toString());
+                System.out.println("CoLOR SAVED: " + n.getColor().getChar());
+                saveCustomYml(nationsConfig, nationsFile);
                 x++;
             } else {
                 break;
@@ -91,9 +93,12 @@ public class Main extends JavaPlugin {
             final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ". item")));
             if (!nationsConfig.contains(x + ". capitallocation")) nationsConfig.set(x + ". capitallocation", null);
             final Location capital = (Location) nationsConfig.get(x + ". capitallocation");
+            if (!nationsConfig.contains(x + ". color")) nationsConfig.set(x + ". color", null);
+            final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ". color").toString().charAt(1));
             Nation nation = new Nation(name, members, capital);
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
+            nation.setColor(color);
             NationManager.addNation(nation);
             try {
             for (String pUUID : nation.getMembers()) {
@@ -106,6 +111,7 @@ public class Main extends JavaPlugin {
                 for (Town town : TownyUniverse.getDataSource().getTowns()) {
                     if (town.getMayor().equals(r)) {
                         nation.addTown(town);
+                        System.out.println("[PA:Nations] Added town: " + town.getName() + " To nation: " + nation.getName());
                     }
                 }
             }
@@ -132,7 +138,6 @@ public class Main extends JavaPlugin {
         new EditColorGUIHandler(this);
 
         //misc
-        new ChatHandler(this);
         new JoinNation(this);
 
         //towny

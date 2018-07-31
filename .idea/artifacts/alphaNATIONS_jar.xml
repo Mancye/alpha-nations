@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="alphaNATIONS:jar">
+  <artifact type="jar" build-on-make="true" name="alphaNATIONS:jar">
     <output-path>$USER_HOME$/Desktop/Premade Spigot 1.10/plugins</output-path>
     <root id="archive" name="alphaNATIONS.jar">
       <element id="module-output" name="alphaNATIONS" />

@@ -4,9 +4,11 @@ import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
+import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -17,13 +19,13 @@ public class ConfirmEditGUIHandler implements Listener {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
-
+    @EventHandler
     public void onConfirmation(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
         if (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("Confirm Your Changes"))) return;
         if (NationEditorManager.getPlayersNation((Player)event.getWhoClicked()) == null) return;
         if (!NationEditorManager.playersEditType.containsKey((Player) event.getWhoClicked())) return;
-
+        event.setCancelled(true);
         Nation n = NationEditorManager.getPlayersNation((Player) event.getWhoClicked());
 
         switch (event.getSlot()) {
@@ -59,9 +61,13 @@ public class ConfirmEditGUIHandler implements Listener {
                         NationEditorManager.playersEditType.remove((Player) event.getWhoClicked());
                     }
                 }
-
+                event.getWhoClicked().closeInventory();
+                MessageUtil.sendMsgWithPrefix((Player)event.getWhoClicked(), ChatColor.GREEN + "Changes Saved!");
+                break;
             case 15:
                 event.getWhoClicked().closeInventory();
+                MessageUtil.sendMsgWithPrefix((Player)event.getWhoClicked(), ChatColor.RED + "Changes not saved!");
+                break;
         }
 
     }

@@ -1,9 +1,16 @@
 package me.mancy.alphanations.listeners.menus;
 
+import me.mancy.alphanations.gui.ConfirmEditGUI;
 import me.mancy.alphanations.main.Main;
+import me.mancy.alphanations.managers.NationEditorManager;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 public class EditColorGUIHandler implements Listener {
 
@@ -13,8 +20,62 @@ public class EditColorGUIHandler implements Listener {
 
     @EventHandler
     private void handleEditColor(InventoryClickEvent event) {
-        // Get wool color
-        // Set nation color to wool color
+        if (event.getClickedInventory() == null) return;
+        if (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("Select Nation Color"))) return;
+        event.setCancelled(true);
+        if (event.getClickedInventory().getItem(event.getSlot()) == null) return;
+        if (!event.getClickedInventory().getItem(event.getSlot()).hasItemMeta()) return;
+        if (!event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) return;
+
+        switch (event.getSlot()) {
+            case 0: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.RED);
+            break;
+            case 1: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_RED);
+            break;
+            case 2: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GOLD);
+            break;
+            case 3: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.YELLOW);
+            break;
+            case 4: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GREEN);
+            break;
+            case 5: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_GREEN);
+            break;
+            case 6: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.RED);
+            break;
+            case 7: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.AQUA);
+            break;
+            case 8: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_AQUA);
+            break;
+            case 9: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLUE);
+            break;
+            case 10: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_BLUE);
+            break;
+            case 11: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.LIGHT_PURPLE);
+            break;
+            case 12: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_PURPLE);
+            break;
+            case 13: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.WHITE);
+            break;
+            case 14: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GRAY);
+            break;
+            case 15: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_GRAY);
+            break;
+            case 16: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLACK);
+            break;
+            default:
+                return;
+        }
+        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+        Team team = board.getTeam("team");
+
+        team.setPrefix(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "◀");
+        team.setSuffix(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "▶");
+        for (Player on : Bukkit.getServer().getOnlinePlayers()) {
+            team.addPlayer(on);
+        }
+        ((Player) event.getWhoClicked()).setScoreboard(board);
+        event.getWhoClicked().openInventory(ConfirmEditGUI.getConfirmMenu());
+
     }
 
 }

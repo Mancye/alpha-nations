@@ -22,13 +22,13 @@ public class AdminMainGUI {
 
         ItemStack editBlock = new ItemStack(Material.GRASS);
         ItemMeta editBlockMeta = editBlock.getItemMeta();
-        editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit block");
+        editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit Block");
         editBlock.setItemMeta(editBlockMeta);
         mainAdminGUI.setItem(10, editBlock);
 
         ItemStack editName = new ItemStack(Material.NAME_TAG);
         ItemMeta editNameMeta = editBlock.getItemMeta();
-        editNameMeta.setDisplayName(ChatColor.GREEN + "Edit name");
+        editNameMeta.setDisplayName(ChatColor.GREEN + "Edit Name");
         editName.setItemMeta(editNameMeta);
         mainAdminGUI.setItem(12, editName);
 
@@ -40,7 +40,7 @@ public class AdminMainGUI {
 
         ItemStack deleteNation = new ItemStack(Material.BARRIER);
         ItemMeta deleteMeta = deleteNation.getItemMeta();
-        deleteMeta.setDisplayName(ChatColor.RED + "Delete This Nation");
+        deleteMeta.setDisplayName(ChatColor.RED + "Delete");
         deleteNation.setItemMeta(deleteMeta);
         mainAdminGUI.setItem(16, deleteNation);
 
