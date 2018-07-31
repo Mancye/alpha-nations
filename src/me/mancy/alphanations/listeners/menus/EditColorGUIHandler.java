@@ -66,6 +66,7 @@ public class EditColorGUIHandler implements Listener {
                 return;
         }
         Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+        board.registerNewTeam("team");
         Team team = board.getTeam("team");
 
         team.setPrefix(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "◀");
