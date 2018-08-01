@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/spigot-api-1.12.2-R0.1-SNAPSHOT-shaded-b1647.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/NametagEdit.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NametagEdit.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/spigot-api-latest.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

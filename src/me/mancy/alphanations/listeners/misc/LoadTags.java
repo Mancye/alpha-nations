@@ -3,10 +3,8 @@ package me.mancy.alphanations.listeners.misc;
 import com.nametagedit.plugin.NametagEdit;
 import com.nametagedit.plugin.api.events.NametagFirstLoadedEvent;
 import me.mancy.alphanations.main.Main;
-import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
