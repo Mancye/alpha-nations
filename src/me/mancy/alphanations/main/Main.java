@@ -67,7 +67,12 @@ public class Main extends JavaPlugin {
                 nationsConfig.set(x + ". capitallocation", n.getCapital());
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ". color", n.getColor().toString());
-                System.out.println("CoLOR SAVED: " + n.getColor().getChar());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". leader", n.getLeaderName());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". leadershiptype", n.getLeadershipType());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ". capitalname", n.getCapitalName());
                 saveCustomYml(nationsConfig, nationsFile);
                 x++;
             } else {
@@ -99,10 +104,19 @@ public class Main extends JavaPlugin {
             final Location capital = (Location) nationsConfig.get(x + ". capitallocation");
             if (!nationsConfig.contains(x + ". color")) nationsConfig.set(x + ". color", null);
             final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ". color").toString().charAt(1));
+            if (!nationsConfig.contains(x + ". leader")) nationsConfig.set(x + ". leader", null);
+            String leaderName = nationsConfig.getString(x + ". leader");
+            if (!nationsConfig.contains(x + ". leadershiptype")) nationsConfig.set(x + ". leadershiptype", null);
+            String leadershiptype = nationsConfig.getString(x + ". leadershiptype");
+            if (!nationsConfig.contains(x + ". capitalname")) nationsConfig.set(x + ". capitalname", null);
+            String capitalName = nationsConfig.getString(x + ". capitalname");
             Nation nation = new Nation(name, members, capital);
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
             nation.setColor(color);
+            nation.setCapitalName(capitalName);
+            nation.setLeaderName(leaderName);
+            nation.setLeadershipType(leadershiptype);
             NationManager.addNation(nation);
             try {
             for (String pUUID : nation.getMembers()) {

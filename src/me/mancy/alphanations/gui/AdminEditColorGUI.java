@@ -5,10 +5,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class AdminEditColorGUI {
     public static Inventory getEditColorInventory() {
         final Inventory inv = Bukkit.createInventory(null, 27, ChatColor.RED + "Select Nation Color");
+
+        final ItemStack empty = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemMeta emptyMeta = empty.getItemMeta();
+        emptyMeta.setDisplayName(" ");
+        empty.setItemMeta(emptyMeta);
 
         InventoryUtil.addButton(inv, Material.RED_WOOL, ChatColor.RED + "Red");
         InventoryUtil.addButton(inv, Material.RED_WOOL, ChatColor.DARK_RED + "Dark Red");
@@ -22,6 +29,7 @@ public class AdminEditColorGUI {
         InventoryUtil.addButton(inv, Material.LIGHT_BLUE_WOOL, ChatColor.AQUA +"Aqua");
         InventoryUtil.addButton(inv, Material.BLUE_WOOL, ChatColor.DARK_AQUA +"Dark Aqua");
         InventoryUtil.addButton(inv, Material.BLUE_WOOL, ChatColor.BLUE + "Blue");
+        inv.setItem(9, empty);
         InventoryUtil.addButton(inv, Material.BLUE_WOOL, ChatColor.DARK_BLUE + "Dark Blue");
 
         InventoryUtil.addButton(inv, Material.MAGENTA_WOOL, ChatColor.LIGHT_PURPLE + "Light Purple");

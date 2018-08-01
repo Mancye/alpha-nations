@@ -53,21 +53,21 @@ public class EditColorGUIHandler implements Listener {
             break;
             case 8: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLUE);
             break;
-            case 9: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_BLUE);
+            case 10: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_BLUE);
 
             break;
-            case 10: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.LIGHT_PURPLE);
+            case 11: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.LIGHT_PURPLE);
             break;
-            case 11: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_PURPLE);
+            case 12: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_PURPLE);
             break;
 
-            case 12: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.WHITE);
+            case 13: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.WHITE);
             break;
-            case 13: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GRAY);
+            case 14: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GRAY);
             break;
-            case 14: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_GRAY);
+            case 15: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_GRAY);
             break;
-            case 15: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLACK);
+            case 16: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLACK);
             break;
 
             default:

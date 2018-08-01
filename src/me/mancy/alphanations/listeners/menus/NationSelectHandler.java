@@ -38,6 +38,7 @@ public class NationSelectHandler implements Listener {
                     if (ChatColor.stripColor(event.getClickedInventory().getItem(event.getSlot()).getItemMeta().getDisplayName()).equalsIgnoreCase(nation.getName())) {
                         nation.addMember(p);
                         MessageUtil.sendMsgWithPrefix(p,ChatColor.GRAY + "You have joined " + ChatColor.GREEN + nation.getName());
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "");
                         String prefix;
                         String suffix;
                         if (NametagEdit.getApi().getNametag(p) != null) {

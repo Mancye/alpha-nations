@@ -9,6 +9,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminMainGUI {
 
 
@@ -22,25 +25,35 @@ public class AdminMainGUI {
 
         ItemStack editBlock = new ItemStack(Material.GRASS);
         ItemMeta editBlockMeta = editBlock.getItemMeta();
-        editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit Block");
+        editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit block");
+        List<String> blockLore = new ArrayList<>();
+        blockLore.add(ChatColor.GRAY + "Edit the block which will represent");
+        blockLore.add(ChatColor.GRAY + "the nation during selection.");
+        editBlockMeta.setLore(blockLore);
         editBlock.setItemMeta(editBlockMeta);
         mainAdminGUI.setItem(10, editBlock);
 
         ItemStack editName = new ItemStack(Material.NAME_TAG);
         ItemMeta editNameMeta = editBlock.getItemMeta();
-        editNameMeta.setDisplayName(ChatColor.GREEN + "Edit Name");
+        editNameMeta.setDisplayName(ChatColor.YELLOW + "Edit name");
+        List<String> nameLore = new ArrayList<>();
+        nameLore.add(ChatColor.GRAY + "Change the name of the nation.");
+        editNameMeta.setLore(nameLore);
         editName.setItemMeta(editNameMeta);
         mainAdminGUI.setItem(12, editName);
 
         ItemStack editColor = new ItemStack(Material.WHITE_WOOL);
         ItemMeta editColorMeta = editBlock.getItemMeta();
-        editColorMeta.setDisplayName(ChatColor.GREEN + "Edit Color");
+        editColorMeta.setDisplayName(ChatColor.DARK_AQUA + "Edit color");
+        List<String> colorLore = new ArrayList<>();
+        colorLore.add(ChatColor.GRAY + "Set the nation's main color.");
+        editColorMeta.setLore(colorLore);
         editColor.setItemMeta(editColorMeta);
         mainAdminGUI.setItem(14, editColor);
 
         ItemStack deleteNation = new ItemStack(Material.BARRIER);
         ItemMeta deleteMeta = deleteNation.getItemMeta();
-        deleteMeta.setDisplayName(ChatColor.RED + "Delete");
+        deleteMeta.setDisplayName(ChatColor.RED + "Delete nation");
         deleteNation.setItemMeta(deleteMeta);
         mainAdminGUI.setItem(16, deleteNation);
 

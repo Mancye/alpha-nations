@@ -24,6 +24,12 @@ public class Nation {
     private ChatColor color;
     private ItemStack item;
 
+
+
+    private String leaderName;
+    private String leadershipType;
+    private String capitalName;
+
     public Nation(String name, List<String> members, Location capital) {
         this.name = name;
         if (members == null) members = new ArrayList<>();
@@ -137,6 +143,36 @@ public class Nation {
         } else {
             this.color = color;
         }
+    }
+
+    public String getLeaderName() {
+        if (this.leaderName.isEmpty())
+            this.leaderName = "None";
+        return this.leaderName;
+    }
+
+    public void setLeaderName(String leaderName) {
+        this.leaderName = leaderName;
+    }
+
+    public String getLeadershipType() {
+        if (this.leadershipType.isEmpty())
+            this.leadershipType = "None";
+        return this.leadershipType;
+    }
+
+    public void setLeadershipType(String leadershipType) {
+        this.leadershipType = leadershipType;
+    }
+
+    public String getCapitalName() {
+        if (this.capitalName.isEmpty())
+            this.capitalName = "None";
+        return this.capitalName;
+    }
+
+    public void setCapitalName(String capitalName) {
+        this.capitalName = capitalName;
     }
 
     public List<Town> getTowns() {

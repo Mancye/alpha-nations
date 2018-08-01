@@ -9,7 +9,7 @@ public class NationSelectionGUI {
 
     private static void setupNationSelectInv(Inventory inv) {
         InventoryUtil.fillNations(inv, 12);
-        InventoryUtil.fillEmptySlots(inv);
+        InventoryUtil.fillEmptySlotsNationSelect(inv);
     }
 
     public static Inventory getPlayerNationSelectionInventory() {

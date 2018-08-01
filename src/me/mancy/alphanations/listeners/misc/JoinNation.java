@@ -25,6 +25,7 @@ public class JoinNation implements Listener {
     private void selectNation(PlayerTeleportEvent event) {
         if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)) {
             if (event.getFrom().getWorld().getName().equalsIgnoreCase("tutorial")) {
+                event.setCancelled(true);
                 if (NationManager.getPlayersNation(event.getPlayer()) == null) {
                     MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Select a nation to join!");
                     if (NationManager.getAmountNations() <= 0) {
