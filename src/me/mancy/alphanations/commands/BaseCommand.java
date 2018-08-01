@@ -33,7 +33,7 @@ public class BaseCommand implements CommandExecutor {
                     String town = t.getMayor().getName() + "'s Town";
                     sb.append(town);
                     if (nation.getTowns().size() > 1) {
-                        sb.append(", ")
+                        sb.append(", ");
                     }
                 }
                 p.sendMessage(ChatColor.GRAY + ">> Allied Towns" + ChatColor.DARK_GRAY + " [" + color + nation.getTowns().size() + ChatColor.DARK_GRAY + "]: " + ChatColor.WHITE + sb.toString());

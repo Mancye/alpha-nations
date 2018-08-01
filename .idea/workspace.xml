@@ -7,24 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6904d632-42bb-4c11-afa0-fd007c86b00e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alphaNATIONS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/alphaNATIONS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/main/Nation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/managers/NationManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/alphaNATIONS/me/mancy/alphanations/utils/InventoryUtil.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminEditColorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/AdminMainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/ConfirmEditGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/gui/NationSelectionGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/EditColorGUIHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/menus/NationSelectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/misc/JoinNation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/listeners/towny/TownJoinHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/main/Nation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/mancy/alphanations/utils/InventoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/mancy/alphanations/utils/InventoryUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +34,8 @@
       <file leaf-file-name="BaseCommand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-388">
-              <caret line="50" column="90" lean-forward="true" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+            <state relative-caret-position="235">
+              <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -205,11 +188,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="641" />
-    <option name="y" value="143" />
-    <option name="width" value="974" />
-    <option name="height" value="844" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="101" />
+    <option name="y" value="42" />
+    <option name="width" value="1569" />
+    <option name="height" value="998" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -387,7 +370,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="641" y="143" width="974" height="844" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -402,8 +385,8 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8878249" visible="true" weight="0.0" />
-      <window_info id="Structure" order="1" sideWeight="0.1121751" side_tool="true" visible="true" weight="0.0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.91028446" visible="true" weight="0.0" />
+      <window_info id="Structure" order="1" sideWeight="0.08971553" side_tool="true" visible="true" weight="0.0" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -749,8 +732,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/mancy/alphanations/commands/BaseCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-388">
-          <caret line="50" column="90" lean-forward="true" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+        <state relative-caret-position="235">
+          <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
         </state>
       </provider>
     </entry>
