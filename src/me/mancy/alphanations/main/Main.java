@@ -7,6 +7,7 @@ import com.palmergames.bukkit.towny.object.TownyUniverse;
 import me.mancy.alphanations.commands.BaseCommand;
 import me.mancy.alphanations.listeners.menus.*;
 import me.mancy.alphanations.listeners.misc.JoinNation;
+import me.mancy.alphanations.listeners.misc.LoadTags;
 import me.mancy.alphanations.listeners.towny.TownCreateHandler;
 import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
 import me.mancy.alphanations.listeners.towny.TownJoinHandler;
@@ -139,6 +140,7 @@ public class Main extends JavaPlugin {
 
         //misc
         new JoinNation(this);
+        new LoadTags(this);
 
         //towny
         new TownJoinHandler(this);
