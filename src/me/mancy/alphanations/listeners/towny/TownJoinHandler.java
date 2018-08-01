@@ -40,7 +40,7 @@ public class TownJoinHandler implements Listener, Runnable {
         if (NationManager.getPlayersNation(p) == null) return;
         Nation nation = NationManager.getPlayersNation(p);
         if (!nation.doesContainTown(event.getTown())) {
-            TownySettings.set
+
             BukkitScheduler scheduler = Bukkit.getScheduler();
             scheduler.scheduleSyncDelayedTask(plugin, () -> {
                 if (event.getTown().hasResident(event.getResident())) {

@@ -41,13 +41,13 @@ public class Main extends JavaPlugin {
         registerEvents();
         registerCommands();
         loadNations();
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[alphaNATIONS] Plugin Enabled Successfully");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[alphaNATIONS] Version " + this.getDescription().getVersion() + " Enabled Successfully");
     }
 
     @Override
     public void onDisable() {
         saveNations();
-        Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[alphaNATIONS] Plugin Disabled Successfully");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[alphaNATIONS] Version " + this.getDescription().getVersion() + " Disabled Successfully");
     }
 
     private void saveNations() {
