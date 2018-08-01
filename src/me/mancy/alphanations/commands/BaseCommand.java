@@ -110,10 +110,6 @@ public class BaseCommand implements CommandExecutor {
                     return true;
                 }
             } else if (args.length == 2) {
-                    /*
-                        Make sure no other nations with the same name exist
-                        Make su
-                     */
                 if (sender.hasPermission("nations.edit") || sender.hasPermission("nations.*")) {
                     String name = args[1];
 
