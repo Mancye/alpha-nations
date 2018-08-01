@@ -18,7 +18,8 @@ public class LoadTags implements Listener {
     private void onTagLoad(NametagFirstLoadedEvent event) {
         String prefix;
         String suffix;
-        if (NametagEdit.getApi().getNametag(event.getPlayer()) != null) {
+        if (NationManager.getPlayersNation(event.getPlayer()) == null) return;
+        if (NametagEdit.getApi().getNametag(event.getPlayer()).getPrefix().equalsIgnoreCase("") && NametagEdit.getApi().getNametag(event.getPlayer()).getSuffix().equalsIgnoreCase("")) {
             prefix = NametagEdit.getApi().getNametag(event.getPlayer()).getPrefix().substring(0, 9) + NationManager.getPlayersNation(event.getPlayer()).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
             suffix = NationManager.getPlayersNation(event.getPlayer()).getColor() + "▶";
         } else {

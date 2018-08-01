@@ -12,10 +12,13 @@ import me.mancy.alphanations.listeners.towny.TownCreateHandler;
 import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
 import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
+import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -140,7 +143,7 @@ public class Main extends JavaPlugin {
 
         //misc
         new JoinNation(this);
-        new LoadTags(this);
+        //new LoadTags(this);
 
         //towny
         new TownJoinHandler(this);

@@ -21,6 +21,11 @@ public class BaseCommand implements CommandExecutor {
         if (label.equalsIgnoreCase("nations")) {
             if (args.length == 0) {
                 if (p.hasPermission("nations.select") || p.hasPermission("nations.*")) {
+                    if (NationManager.getAmountNations() <= 0) {
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "No nations found!");
+                        return true;
+                    }
+
                     if (NationManager.getPlayersNation(p) == null) {
                         MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Select a nation to join");
                         p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
@@ -63,6 +68,10 @@ public class BaseCommand implements CommandExecutor {
                     }
                 } else if (args[0].equalsIgnoreCase("edit")) {
                     if (p.hasPermission("nations.admin") || p.hasPermission("nations.*")) {
+                        if (NationManager.getAmountNations() <= 0) {
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "No nations found!");
+                            return true;
+                        }
                         p.openInventory(NationSelectionGUI.getAdminNationSelectionInventory());
                         return true;
                     }
@@ -74,6 +83,10 @@ public class BaseCommand implements CommandExecutor {
                             return true;
                         } else {
                             MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "You must join a nation first!");
+                            if (NationManager.getAmountNations() <= 0) {
+                                MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "Error: No nations created!");
+                                return true;
+                            }
                             p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
                             return true;
                         }
@@ -105,6 +118,12 @@ public class BaseCommand implements CommandExecutor {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations list" + ChatColor.GRAY + " To list nations");
                         }
                     }
+                } else if (args[0].equalsIgnoreCase("debug")) {
+                    if (NationManager.getPlayersNation(p) != null) {
+                        NationManager.getPlayersNation(p).removeMember(p);
+                        p.sendMessage(ChatColor.RED + "DEBUG left nation");
+                    }
+                    return true;
                 } else {
                     MessageUtil.sendInvalidArgumentsMsg(p);
                     return true;
@@ -124,12 +143,18 @@ public class BaseCommand implements CommandExecutor {
                             return true;
                         }
                     } else if (args[0].equalsIgnoreCase("remove")) {
-                        NationManager.removeNation(name);
-                        if (!NationManager.doesNationExist(name)) {
-                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + name + ChatColor.GRAY + " Nation Removed Successfully!");
-                            return true;
+
+                        if (NationManager.doesNationExist(name)) {
+                            NationManager.removeNation(name);
+                            if (NationManager.doesNationExist(name)) {
+                                MessageUtil.sendMsgWithPrefix(p, "An error occurred while removing this nation! This nation still exists!");
+                                return true;
+                            } else {
+                                MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + name + ChatColor.GRAY + " Nation Removed Successfully!");
+                                return true;
+                            }
                         } else {
-                            MessageUtil.sendMsgWithPrefix(p, "An error occurred while removing this nation! This nation already exists!");
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nation not found, see a list of available nations with " + ChatColor.GREEN + "/nations list");
                             return true;
                         }
                     } else if (args[0].equalsIgnoreCase("setcapital")) {

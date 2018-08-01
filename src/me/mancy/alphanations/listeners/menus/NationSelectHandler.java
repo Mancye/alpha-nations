@@ -2,21 +2,26 @@ package me.mancy.alphanations.listeners.menus;
 
 import com.nametagedit.plugin.NametagEdit;
 import me.mancy.alphanations.gui.AdminMainGUI;
+import me.mancy.alphanations.gui.NationSelectionGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.scheduler.BukkitScheduler;
 
 public class NationSelectHandler implements Listener {
-
+    private Main plugin;
     public NationSelectHandler(Main main) {
-        main.getServer().getPluginManager().registerEvents(this, main);
+        this.plugin = main;
+        main.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
@@ -50,6 +55,21 @@ public class NationSelectHandler implements Listener {
                 }
             }
         }
+
+    }
+
+    @EventHandler
+    private void cancelClose(InventoryCloseEvent event) {
+        if (event.getInventory() == null) return;
+        if  (!(ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase("choose a nation"))) return;
+        if (!(event.getPlayer() instanceof Player)) return;
+        BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+        scheduler.scheduleSyncDelayedTask(plugin, (Runnable) () -> {
+            Player p = (Player) event.getPlayer();
+            if (NationManager.getPlayersNation(p) == null) {
+                p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
+            }
+        }, 5L);
 
     }
 

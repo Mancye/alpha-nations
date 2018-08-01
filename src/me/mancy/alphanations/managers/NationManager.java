@@ -124,6 +124,10 @@ public class NationManager {
         return null;
     }
 
+    public static int getAmountNations() {
+        return getNationList().size();
+    }
+
 
 
 }

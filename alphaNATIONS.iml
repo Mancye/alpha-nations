@@ -28,10 +28,12 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/spigot-api-latest.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/spigot-latest (1).jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Documents/spigot-latest (1).jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

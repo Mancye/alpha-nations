@@ -17,7 +17,7 @@ public class MessageUtil {
             ChatColor.RED + "Sorry, you don't have permission for this";
 
     private static final String invalidArgsMsg =
-            ChatColor.GRAY + " Invalid Arguments, Use " + ChatColor.GREEN + "/nations help" + ChatColor.GRAY + " To View Available Commands";
+            ChatColor.GRAY + "Invalid Arguments, Use " + ChatColor.GREEN + "/nations help" + ChatColor.GRAY + " To View Available Commands";
 
     public static void sendNoPermissionMsg(Player p) {
         p.sendMessage(prefix + " " + noPermissionMsg);

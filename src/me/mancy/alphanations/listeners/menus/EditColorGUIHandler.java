@@ -59,27 +59,35 @@ public class EditColorGUIHandler implements Listener {
             case 10: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.LIGHT_PURPLE);
             break;
             case 11: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_PURPLE);
-
             break;
+
             case 12: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.WHITE);
             break;
             case 13: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.GRAY);
             break;
             case 14: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.DARK_GRAY);
-
             break;
             case 15: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLACK);
             break;
+
             default:
                 return;
         }
-<<<<<<< HEAD
-        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
-        board.registerNewTeam("team");
-        Team team = board.getTeam("team");
-=======
->>>>>>> 1.12.2
-
+        for (String sp : NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getMembers()) {
+            Player p = Bukkit.getPlayer(UUID.fromString(sp));
+            String prefix;
+            String suffix;
+            if (NametagEdit.getApi().getNametag(p) != null) {
+                prefix = NametagEdit.getApi().getNametag(p).getPrefix().substring(0, 9) + NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                suffix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "▶";
+            } else {
+                prefix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                suffix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "▶";
+            }
+            p.performCommand("nte player " + p.getName() + " clear");
+            p.performCommand("nte player " + p.getName() + " prefix " + prefix);
+            p.performCommand("nte player " + p.getName() + " suffix " + suffix);
+        }
 
         event.getWhoClicked().openInventory(ConfirmEditGUI.getConfirmMenu());
 

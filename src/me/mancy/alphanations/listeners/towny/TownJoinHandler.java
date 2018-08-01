@@ -1,5 +1,6 @@
 package me.mancy.alphanations.listeners.towny;
 
+import com.palmergames.bukkit.towny.TownySettings;
 import com.palmergames.bukkit.towny.event.TownAddResidentEvent;
 import com.palmergames.bukkit.towny.exceptions.EmptyTownException;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
@@ -39,6 +40,7 @@ public class TownJoinHandler implements Listener, Runnable {
         if (NationManager.getPlayersNation(p) == null) return;
         Nation nation = NationManager.getPlayersNation(p);
         if (!nation.doesContainTown(event.getTown())) {
+            TownySettings.set
             BukkitScheduler scheduler = Bukkit.getScheduler();
             scheduler.scheduleSyncDelayedTask(plugin, () -> {
                 if (event.getTown().hasResident(event.getResident())) {
