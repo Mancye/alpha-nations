@@ -1,7 +1,7 @@
 package me.mancy.alphanations.commands;
 
-import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.gui.NationSelectionGUI;
+import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
@@ -22,19 +22,26 @@ public class BaseCommand implements CommandExecutor {
         if (label.equalsIgnoreCase("nations")) {
             if (args.length == 0) {
                 if (NationManager.getPlayersNation(p) == null) {
+                    if (NationManager.getAmountNations() <= 0) {
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "Error: No nations found");
+                        return true;
+                    }
                     p.openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
                     return true;
                 }
                 Nation nation = NationManager.getPlayersNation(p);
                 ChatColor color = nation.getColor();
+                p.sendMessage(ChatColor.GRAY + ">> " + ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH.toString() + "---------+-| "
+                                + ChatColor.RESET + color.toString() + "Nation of " + nation.getName() + " " + ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH + "|-+---------" + ChatColor.RESET);
                 p.sendMessage(ChatColor.GRAY + ">> Capital City" + ChatColor.DARK_GRAY + ":" + color + " " + nation.getCapitalName());
                 StringBuilder sb = new StringBuilder();
-                for (Town t : nation.getTowns()) {
-                    String town = t.getMayor().getName() + "'s Town";
+                for (int t = 0; t < nation.getTowns().size(); t++) {
+                    String town = nation.getTowns().get(t).getMayor().getName() + "'s Town";
                     sb.append(town);
-                    if (nation.getTowns().size() > 1) {
+                    if (nation.getTowns().size() > 1 && t < nation.getTowns().size() - 1) {
                         sb.append(", ");
                     }
+
                 }
                 p.sendMessage(ChatColor.GRAY + ">> Allied Towns" + ChatColor.DARK_GRAY + " [" + color + nation.getTowns().size() + ChatColor.DARK_GRAY + "]: " + ChatColor.WHITE + sb.toString());
                 ChatColor typeColor = ChatColor.WHITE;
@@ -106,11 +113,14 @@ public class BaseCommand implements CommandExecutor {
                         String helpPrefix = ChatColor.GRAY + "-";
                         p.sendMessage(" ");
                         p.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.WHITE + ChatColor.BOLD.toString() + "P" + ChatColor.RED + ChatColor.BOLD.toString() + "A" + ChatColor.DARK_GRAY + ":" + ChatColor.GRAY + "Nations" + ChatColor.DARK_GRAY + "] " + ChatColor.GREEN + "Nations" + ChatColor.GRAY + " help page:");
-                        ;
-                        p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations" + ChatColor.GRAY + " Opens the nation selection menu if a nation is not already selected");
 
+                        p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations" + ChatColor.GRAY + " To view information on your nation");
+                        p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations select" + ChatColor.GRAY + " To select a nation");
                         if (p.hasPermission("nations.capital") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations capital" + ChatColor.GRAY + " To travel to your nation's capital");
+                        }
+                        if (p.hasPermission("nations.leave") || p.hasPermission("nations.*")) {
+                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations leave" + ChatColor.GRAY + " To leave your nation");
                         }
                         if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations edit" + ChatColor.GRAY + " To open the editor GUI");
@@ -121,8 +131,16 @@ public class BaseCommand implements CommandExecutor {
                         if (p.hasPermission("nations.setcapital") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setcapital (nation name)" + ChatColor.GRAY + " To set the capital location of a specified nation to your current location");
                         }
+                        if (p.hasPermission("nations.setcapital") || p.hasPermission("nations.*")) {
+                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setchooselocation" + ChatColor.GRAY + " To set the location that players will be at when choosing a nation");
+                        }
                         if (p.hasPermission("nations.list") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations list" + ChatColor.GRAY + " To list nations");
+                        }
+                        if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
+                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setcapitalname (nation name) (capital name)" + ChatColor.GRAY + " To set the capital name of the specified nation");
+                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setleadership (nation name) (monarchy/tyranny/diplomacy)" + ChatColor.GRAY + " To set the leadership type of the specified nation");
+                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setleader (nation name) (name)" + ChatColor.GRAY + " To set the leaders name of the specified nation");
                         }
                     }
                 } else if (args[0].equalsIgnoreCase("select")) {
@@ -160,6 +178,15 @@ public class BaseCommand implements CommandExecutor {
                         MessageUtil.sendNoPermissionMsg(p);
                         return true;
                     }
+                } else if (args[0].equalsIgnoreCase("setchooselocation")) {
+                    if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
+                        Location loc = new Location(p.getWorld(), p.getLocation().getBlockX(), p.getWorld().getHighestBlockYAt(p.getLocation()), p.getLocation().getBlockZ());
+                        Main.chooseLocation = loc;
+                        MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Set choose location to your current position");
+                    } else {
+                        MessageUtil.sendNoPermissionMsg(p);
+                        return true;
+                    }
                 } else {
                     MessageUtil.sendInvalidArgumentsMsg(p);
                     return true;
@@ -170,12 +197,13 @@ public class BaseCommand implements CommandExecutor {
 
                     if (args[0].equalsIgnoreCase("add")) {
 
-                        NationManager.addNation(new Nation(name, null, p.getWorld().getHighestBlockAt(p.getLocation()).getLocation()));
-                        if (NationManager.doesNationExist(name)) {
+
+                        if (!NationManager.doesNationExist(name)) {
+                            NationManager.addNation(new Nation(name, null, p.getWorld().getHighestBlockAt(p.getLocation()).getLocation()));
                             MessageUtil.sendMsgWithPrefix(p, ChatColor.GREEN + name + ChatColor.GRAY + " Nation Has Been Created Successfully");
                             return true;
                         } else {
-                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "An error occurred while creating this nation!");
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "A nation with this same name already exists!");
                             return true;
                         }
                     } else if (args[0].equalsIgnoreCase("remove")) {
@@ -183,7 +211,7 @@ public class BaseCommand implements CommandExecutor {
                         if (NationManager.doesNationExist(name)) {
                             NationManager.removeNation(name);
                             if (NationManager.doesNationExist(name)) {
-                                MessageUtil.sendMsgWithPrefix(p, "An error occurred while removing this nation! This nation still exists!");
+                                MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "An error occurred while removing this nation! This nation still exists!");
                                 return true;
                             } else {
                                 MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + name + ChatColor.GRAY + " Nation Removed Successfully!");
@@ -262,7 +290,7 @@ public class BaseCommand implements CommandExecutor {
                                 }
                                 String type = args[2];
                                 String formattedType = type.substring(0, 1).toUpperCase();
-                                for (int x = 1; x < type.length() - 1; x++) {
+                                for (int x = 1; x < type.length(); x++) {
                                     formattedType += type.substring(x, x + 1).toLowerCase();
                                 }
 

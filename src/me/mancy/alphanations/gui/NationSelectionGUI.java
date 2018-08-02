@@ -1,5 +1,6 @@
 package me.mancy.alphanations.gui;
 
+import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,14 +15,25 @@ public class NationSelectionGUI {
 
     public static Inventory getPlayerNationSelectionInventory() {
         final String invName = ChatColor.RED + "Choose a nation";
-        Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
+        Inventory selectionGUI;
+        if (NationManager.getAmountNations() > 8) {
+            selectionGUI = Bukkit.createInventory(null, 54, invName);
+        } else {
+            selectionGUI = Bukkit.createInventory(null, 27, invName);
+        }
         setupNationSelectInv(selectionGUI);
+
         return selectionGUI;
     }
 
     public static Inventory getAdminNationSelectionInventory() {
         final String invName = ChatColor.RED + "Choose a nation to edit";
-        Inventory selectionGUI = Bukkit.createInventory(null, 27, invName);
+        Inventory selectionGUI;
+        if (NationManager.getAmountNations() > 8) {
+            selectionGUI = Bukkit.createInventory(null, 54, invName);
+        } else {
+            selectionGUI = Bukkit.createInventory(null, 27, invName);
+        }
         setupNationSelectInv(selectionGUI);
         return selectionGUI;
     }

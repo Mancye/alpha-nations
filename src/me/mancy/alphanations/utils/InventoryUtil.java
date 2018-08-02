@@ -40,10 +40,10 @@ public class InventoryUtil {
         }
     }
 
-    public static void fillNations(Inventory inv, int startSlot) {
+    public static Inventory fillNations(Inventory inv, int startSlot) {
         int slot = startSlot;
         for (Nation nation : NationManager.getNationList()) {
-            if (slot > inv.getSize() && slot < 54) {
+            /*if (slot > inv.getSize() && slot < 54) {
                 Map<ItemStack, Integer> previousInv = new HashMap<>();
                 for (int x = 0; x < inv.getSize() - 1; x++) {
                     if (inv.getItem(x) != null && !inv.getItem(x).getType().equals(Material.AIR))
@@ -54,9 +54,9 @@ public class InventoryUtil {
                     resizedInv.setItem(previousInv.get(i), i);
                 }
                 inv = resizedInv;
-            } else {
-                return;
-            }
+                return resizedInv;
+                }
+                */
             ItemStack nationItem = nation.getItem();
             if (nation.getItem() == null) nationItem = new ItemStack(Material.BARRIER);
             ItemMeta nationMeta = nationItem.getItemMeta();
@@ -67,6 +67,7 @@ public class InventoryUtil {
             inv.setItem(slot, nationItem);
             slot += 2;
         }
+        return inv;
     }
 
     public static void addButton(Inventory inv, Material material, String name) {

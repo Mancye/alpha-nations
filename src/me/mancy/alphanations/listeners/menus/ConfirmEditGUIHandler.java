@@ -26,7 +26,7 @@ public class ConfirmEditGUIHandler implements Listener {
     @EventHandler
     public void onConfirmation(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
-        if (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("Confirm Your Changes"))) return;
+        if (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("Are you sure?"))) return;
         if (NationEditorManager.getPlayersNation((Player)event.getWhoClicked()) == null) return;
         if (!NationEditorManager.playersEditType.containsKey((Player) event.getWhoClicked())) return;
         event.setCancelled(true);

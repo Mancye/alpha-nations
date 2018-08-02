@@ -35,6 +35,7 @@ public class Main extends JavaPlugin {
 
     private File nationsFile = new File(this.getDataFolder() + "/nations.yml");
     private FileConfiguration nationsConfig = YamlConfiguration.loadConfiguration(nationsFile);
+    public static Location chooseLocation;
 
     @Override
     public void onEnable() {
@@ -51,7 +52,7 @@ public class Main extends JavaPlugin {
     }
 
     private void saveNations() {
-        nationsConfig.set("Amount of Nations", NationManager.nationList.size());
+        nationsConfig.set("Amount of Nations", NationManager.getAmountNations());
         saveCustomYml(nationsConfig, nationsFile);
         int x = 1;
         for (Nation n : NationManager.getNationList()) {
@@ -79,6 +80,8 @@ public class Main extends JavaPlugin {
                 break;
             }
         }
+        nationsConfig.set("chooselocation", chooseLocation);
+        saveCustomYml(nationsConfig, nationsFile);
 
     }
 
@@ -101,7 +104,11 @@ public class Main extends JavaPlugin {
             if (!nationsConfig.contains(x + ". item")) nationsConfig.set(x + ". item", null);
             final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ". item")));
             if (!nationsConfig.contains(x + ". capitallocation")) nationsConfig.set(x + ". capitallocation", null);
-            final Location capital = (Location) nationsConfig.get(x + ". capitallocation");
+            Location capital = new Location(Bukkit.getWorld("world"), 0, 0, 0);
+            if (nationsConfig.get(x + ". capitallocation") != null) {
+                capital = (Location) nationsConfig.get(x + ". capitallocation");
+            }
+
             if (!nationsConfig.contains(x + ". color")) nationsConfig.set(x + ". color", null);
             final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ". color").toString().charAt(1));
             if (!nationsConfig.contains(x + ". leader")) nationsConfig.set(x + ". leader", null);
@@ -138,6 +145,12 @@ public class Main extends JavaPlugin {
             }
 
         }
+        if (!nationsConfig.contains("chooselocation")) nationsConfig.set("chooselocation", null);
+        Location choose = new Location(Bukkit.getWorld("world"), 0, 0, 0);
+        if (nationsConfig.get("chooselocation") != null) {
+            choose = (Location) nationsConfig.get("chooselocation");
+        }
+        chooseLocation = choose;
     }
 
     private void registerCommands() {
@@ -154,11 +167,11 @@ public class Main extends JavaPlugin {
         new ConfirmEditGUIHandler(this);
         new EditBlockGUIHandler(this);
         new EditColorGUIHandler(this);
-
         //misc
         new JoinNation(this);
-        //new LoadTags(this);
-
+        if (this.getServer().getPluginManager().isPluginEnabled("NametagEdit")) {
+            new LoadTags(this);
+        }
         //towny
         new TownJoinHandler(this);
         new TownCreateHandler(this);

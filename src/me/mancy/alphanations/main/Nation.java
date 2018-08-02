@@ -1,7 +1,8 @@
 package me.mancy.alphanations.main;
 
+import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Town;
-import me.mancy.alphanations.managers.NationManager;
+import com.palmergames.bukkit.towny.object.TownyUniverse;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,17 +36,21 @@ public class Nation {
         if (members == null) members = new ArrayList<>();
         this.members = members;
         this.capital = capital;
+        this.item = new ItemStack(Material.GRASS_BLOCK);
+        this.leadershipType = " ";
+        this.leaderName = " ";
+        this.capitalName = " ";
     }
     public ItemStack getItem() {
         if (this.item == null) {
-            this.item = new ItemStack(Material.BARRIER);
+            this.item = new ItemStack(Material.GRASS_BLOCK);
         }
         return this.item;
     }
 
     public void setItem(ItemStack item) {
         if (item == null) {
-            this.item = new ItemStack(Material.BARRIER);
+            this.item = new ItemStack(Material.GRASS_BLOCK);
         }
         this.item = item;
     }
@@ -82,12 +87,45 @@ public class Nation {
         if (player == null) return;
         if  (members.contains(player.getUniqueId().toString())) return;
         members.add(player.getUniqueId().toString());
+
+        try {
+            Town town;
+            if (TownyUniverse.getDataSource().getResident(player.getName()).hasTown()) {
+                town = TownyUniverse.getDataSource().getResident(player.getName()).getTown();
+            } else {
+                return;
+            }
+            if (town.getMayor().equals(TownyUniverse.getDataSource().getResident(player.getName()))) {
+                addTown(town);
+                broadcast(ChatColor.GRAY + "The town of " + ChatColor.GREEN + town.getName() +
+                        ChatColor.GRAY + " has joined the nation of " + ChatColor.GREEN + getName());
+            }
+        } catch (NotRegisteredException e) {
+            e.printStackTrace();
+        }
+        player.teleport(this.getCapital());
     }
 
     public void removeMember(Player player) {
         if (player == null) return;
+
         if (members.contains(player.getUniqueId().toString())) {
             members.remove(player.getUniqueId().toString());
+        }
+
+        try {
+            Town town;
+            if (TownyUniverse.getDataSource().getResident(player.getName()).hasTown()) {
+                town = TownyUniverse.getDataSource().getResident(player.getName()).getTown();
+            } else {
+                return;
+            }
+            if (town.getMayor().equals(TownyUniverse.getDataSource().getResident(player.getName()))) {
+                removeTown(town);
+                broadcast(ChatColor.GRAY + "The town of " + ChatColor.RED + town.getName() + ChatColor.GRAY + " has left the nation of " + ChatColor.RED + getName());
+            }
+        } catch (NotRegisteredException e) {
+            e.printStackTrace();
         }
     }
 
@@ -146,7 +184,7 @@ public class Nation {
     }
 
     public String getLeaderName() {
-        if (this.leaderName.isEmpty())
+        if (this.leaderName.equals(""))
             this.leaderName = "None";
         return this.leaderName;
     }
@@ -156,7 +194,7 @@ public class Nation {
     }
 
     public String getLeadershipType() {
-        if (this.leadershipType.isEmpty())
+        if (this.leadershipType.equals(""))
             this.leadershipType = "None";
         return this.leadershipType;
     }
@@ -166,7 +204,7 @@ public class Nation {
     }
 
     public String getCapitalName() {
-        if (this.capitalName.isEmpty())
+        if (this.capitalName.equals(""))
             this.capitalName = "None";
         return this.capitalName;
     }

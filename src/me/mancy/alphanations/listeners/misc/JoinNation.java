@@ -6,6 +6,7 @@ import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -21,11 +22,13 @@ public class JoinNation implements Listener {
     /*
     Prompt user with nation selection upon nether portal entrance
      */
+
     @EventHandler
     private void selectNation(PlayerTeleportEvent event) {
         if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)) {
             if (event.getFrom().getWorld().getName().equalsIgnoreCase("tutorial")) {
                 event.setCancelled(true);
+                event.setTo(Main.chooseLocation);
                 if (NationManager.getPlayersNation(event.getPlayer()) == null) {
                     MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Select a nation to join!");
                     if (NationManager.getAmountNations() <= 0) {
@@ -43,6 +46,7 @@ public class JoinNation implements Listener {
         BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
         scheduler.scheduleSyncDelayedTask(plugin, () -> {
             if (NationManager.getPlayersNation(event.getPlayer()) == null) {
+
                 if (NationManager.getAmountNations() > 0) {
                     event.getPlayer().openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
                 }

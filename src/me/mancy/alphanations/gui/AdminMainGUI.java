@@ -54,6 +54,9 @@ public class AdminMainGUI {
         ItemStack deleteNation = new ItemStack(Material.BARRIER);
         ItemMeta deleteMeta = deleteNation.getItemMeta();
         deleteMeta.setDisplayName(ChatColor.RED + "Delete nation");
+        List<String> deleteLore = new ArrayList<>();
+        deleteLore.add(ChatColor.GRAY + "Delete this nation.");
+        deleteMeta.setLore(deleteLore);
         deleteNation.setItemMeta(deleteMeta);
         mainAdminGUI.setItem(16, deleteNation);
 
