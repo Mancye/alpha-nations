@@ -3,7 +3,6 @@ package me.mancy.alphanations.managers;
 import com.palmergames.bukkit.towny.object.Town;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
-import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -20,7 +19,7 @@ public class NationManager {
         this.plugin = main;
     }
 
-    public static List<Nation> nationList = new ArrayList<>();
+    private static List<Nation> nationList = new ArrayList<>();
 
     public static List<Nation> getNationList() {
         return nationList;

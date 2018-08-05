@@ -36,7 +36,7 @@ public class BaseCommand implements CommandExecutor {
                 p.sendMessage(ChatColor.GRAY + ">> Capital City" + ChatColor.DARK_GRAY + ":" + color + " " + nation.getCapitalName());
                 StringBuilder sb = new StringBuilder();
                 for (int t = 0; t < nation.getTowns().size(); t++) {
-                    String town = nation.getTowns().get(t).getMayor().getName() + "'s Town";
+                    String town = nation.getTowns().get(t).getName();
                     sb.append(town);
                     if (nation.getTowns().size() > 1 && t < nation.getTowns().size() - 1) {
                         sb.append(", ");

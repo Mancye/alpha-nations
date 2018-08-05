@@ -6,12 +6,15 @@ import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.scheduler.BukkitScheduler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JoinNation implements Listener {
     private Main plugin;
@@ -22,20 +25,23 @@ public class JoinNation implements Listener {
     /*
     Prompt user with nation selection upon nether portal entrance
      */
-
+    public static List<Player> choosing = new ArrayList<>();
     @EventHandler
     private void selectNation(PlayerTeleportEvent event) {
         if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)) {
             if (event.getFrom().getWorld().getName().equalsIgnoreCase("tutorial")) {
-                event.setCancelled(true);
-                event.setTo(Main.chooseLocation);
+                event.getPlayer().teleport(Main.chooseLocation);
                 if (NationManager.getPlayersNation(event.getPlayer()) == null) {
-                    MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Select a nation to join!");
                     if (NationManager.getAmountNations() <= 0) {
                         MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.RED + "Error: No nations created!");
                         return;
                     }
-                    event.getPlayer().openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
+                    if (!choosing.contains(event.getPlayer())) {
+                        MessageUtil.sendMsgWithPrefix(event.getPlayer(), ChatColor.GRAY + "Select a nation to join!");
+                        event.getPlayer().openInventory(NationSelectionGUI.getPlayerNationSelectionInventory());
+                        choosing.add(event.getPlayer());
+                    }
+
                 }
             }
         }

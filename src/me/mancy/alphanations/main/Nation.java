@@ -1,5 +1,6 @@
 package me.mancy.alphanations.main;
 
+import com.nametagedit.plugin.NametagEdit;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
@@ -25,11 +26,15 @@ public class Nation {
     private ChatColor color;
     private ItemStack item;
 
-
-
     private String leaderName;
     private String leadershipType;
     private String capitalName;
+
+    private static Main plugin;
+
+    public Nation(Main main) {
+        plugin = main;
+    }
 
     public Nation(String name, List<String> members, Location capital) {
         this.name = name;
@@ -83,11 +88,29 @@ public class Nation {
         return members;
     }
 
+    public void resetDescription() {
+        if (this.menuDescription != null)
+            this.menuDescription = new ArrayList<>();
+    }
+
     public void addMember(Player player) {
         if (player == null) return;
         if  (members.contains(player.getUniqueId().toString())) return;
         members.add(player.getUniqueId().toString());
-
+        if (plugin.getServer().getPluginManager().isPluginEnabled("NametagEdit")) {
+            String prefix;
+            String suffix;
+            if (NametagEdit.getApi().getNametag(player).getPrefix().length() >= 9) {
+                prefix = NametagEdit.getApi().getNametag(player).getPrefix().substring(0, 9) + getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                suffix = getColor() + "▶";
+            } else {
+                prefix = getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                suffix = getColor() + "▶";
+            }
+            player.performCommand("nte player " + player.getName() + " clear");
+            player.performCommand("nte player " + player.getName() + " prefix " + prefix);
+            player.performCommand("nte player " + player.getName() + " suffix " + suffix);
+        }
         try {
             Town town;
             if (TownyUniverse.getDataSource().getResident(player.getName()).hasTown()) {
@@ -98,7 +121,7 @@ public class Nation {
             if (town.getMayor().equals(TownyUniverse.getDataSource().getResident(player.getName()))) {
                 addTown(town);
                 broadcast(ChatColor.GRAY + "The town of " + ChatColor.GREEN + town.getName() +
-                        ChatColor.GRAY + " has joined the nation of " + ChatColor.GREEN + getName());
+                        ChatColor.GRAY + " has joined the nation of " + getColor() + getName());
             }
         } catch (NotRegisteredException e) {
             e.printStackTrace();
@@ -109,8 +132,14 @@ public class Nation {
     public void removeMember(Player player) {
         if (player == null) return;
 
-        if (members.contains(player.getUniqueId().toString())) {
-            members.remove(player.getUniqueId().toString());
+        members.remove(player.getUniqueId().toString());
+
+        if (plugin.getServer().getPluginManager().isPluginEnabled("NametagEdit")) {
+            if (NametagEdit.getApi().getNametag(player) != null) {
+                String prefix = NametagEdit.getApi().getNametag(player).getPrefix().replace("◀", "");
+                String suffix = NametagEdit.getApi().getNametag(player).getSuffix().replace("▶", "");
+                NametagEdit.getApi().setNametag(player, prefix, suffix);
+            }
         }
 
         try {
@@ -122,7 +151,7 @@ public class Nation {
             }
             if (town.getMayor().equals(TownyUniverse.getDataSource().getResident(player.getName()))) {
                 removeTown(town);
-                broadcast(ChatColor.GRAY + "The town of " + ChatColor.RED + town.getName() + ChatColor.GRAY + " has left the nation of " + ChatColor.RED + getName());
+                broadcast(ChatColor.GRAY + "The town of " + ChatColor.RED + town.getName() + ChatColor.GRAY + " has left the nation of " + getColor() + getName());
             }
         } catch (NotRegisteredException e) {
             e.printStackTrace();
@@ -181,6 +210,30 @@ public class Nation {
         } else {
             this.color = color;
         }
+
+        for (String uuidStr : getMembers()) {
+            if (Bukkit.getPlayer(UUID.fromString(uuidStr)) != null) {
+                Player player = Bukkit.getPlayer(UUID.fromString(uuidStr));
+                if (player.isOnline()) {
+                if (plugin.getServer().getPluginManager().isPluginEnabled("NametagEdit")) {
+                    if (NametagEdit.getApi() == null) return;
+                    if (NametagEdit.getApi().getNametag(player) == null) return;
+                    String prefix;
+                    String suffix;
+                    if (NametagEdit.getApi().getNametag(player).getPrefix().length() >= 9) {
+                        prefix = NametagEdit.getApi().getNametag(player).getPrefix().substring(0, 9) + getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                        suffix = getColor() + "▶";
+                    } else {
+                        prefix = getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
+                        suffix = getColor() + "▶";
+                    }
+
+                    NametagEdit.getApi().setNametag(player, prefix, suffix);
+                }
+                }
+            }
+        }
+
     }
 
     public String getLeaderName() {

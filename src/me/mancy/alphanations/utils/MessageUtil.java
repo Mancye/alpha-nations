@@ -19,6 +19,9 @@ public class MessageUtil {
     private static final String invalidArgsMsg =
             ChatColor.GRAY + "Invalid Arguments, Use " + ChatColor.GREEN + "/nations help" + ChatColor.GRAY + " To View Available Commands";
 
+    private static final String noNationsMsg =
+            ChatColor.RED + "Error: No nations created!";
+
     public static void sendNoPermissionMsg(Player p) {
         p.sendMessage(prefix + " " + noPermissionMsg);
     }
@@ -29,6 +32,10 @@ public class MessageUtil {
 
     public static void sendMsgWithPrefix(Player p, String message) {
         p.sendMessage(prefix + " " + message);
+    }
+
+    public static void sendNoNationsFoundMsg(Player p) {
+        p.sendMessage(prefix + noNationsMsg);
     }
 
     public static String getPrefix() {

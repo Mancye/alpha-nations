@@ -1,5 +1,6 @@
 package me.mancy.alphanations.gui;
 
+import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.utils.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class AdminEditColorGUI {
-    public static Inventory getEditColorInventory() {
-        final Inventory inv = Bukkit.createInventory(null, 27, ChatColor.RED + "Select Nation Color");
+    public static Inventory getEditColorInventory(Nation nation) {
+        final Inventory inv = Bukkit.createInventory(null, 27, nation.getColor() + "Select Nation Color");
 
         final ItemStack empty = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         final ItemMeta emptyMeta = empty.getItemMeta();
@@ -40,7 +41,7 @@ public class AdminEditColorGUI {
         InventoryUtil.addButton(inv, Material.GRAY_WOOL, ChatColor.DARK_GRAY + "Dark Gray");
 
         InventoryUtil.addButton(inv, Material.BLACK_WOOL, ChatColor.DARK_GRAY + "Black");
-
+        InventoryUtil.addButton(inv, 18, Material.ARROW, ChatColor.RED + "Back");
         InventoryUtil.fillEmptySlots(inv);
         return inv;
 

@@ -1,35 +1,33 @@
 package me.mancy.alphanations.listeners.menus;
 
-import com.nametagedit.plugin.NametagEdit;
+import me.mancy.alphanations.gui.AdminMainGUI;
 import me.mancy.alphanations.gui.ConfirmEditGUI;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.managers.NationEditorManager;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
-
-import java.util.UUID;
 
 public class EditColorGUIHandler implements Listener {
 
+    private Main plugin;
     public EditColorGUIHandler(Main main) {
-        main.getServer().getPluginManager().registerEvents(this, main);
+        this.plugin = main;
+        main.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
     private void handleEditColor(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
-        if (!(ChatColor.stripColor(event.getClickedInventory().getName()).equalsIgnoreCase("Select Nation Color"))) return;
+        if (NationEditorManager.getPlayersNation((Player) event.getWhoClicked()) == null) return;
+        if (!event.getClickedInventory().getName().contains(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "Select Nation Color")) return;
         event.setCancelled(true);
         if (event.getClickedInventory().getItem(event.getSlot()) == null) return;
         if (!event.getClickedInventory().getItem(event.getSlot()).hasItemMeta()) return;
         if (!event.getClickedInventory().getItem(event.getSlot()).getItemMeta().hasDisplayName()) return;
-        if (NationEditorManager.getPlayersNation((Player) event.getWhoClicked()) == null) return;
+
 
         switch (event.getSlot()) {
             case 0: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.RED);
@@ -69,26 +67,13 @@ public class EditColorGUIHandler implements Listener {
             break;
             case 16: NationEditorManager.colorChanges.put(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()), ChatColor.BLACK);
             break;
+            case 18: NationEditorManager.playersEditType.remove((Player) event.getWhoClicked());
+                event.getWhoClicked().openInventory(AdminMainGUI.getAdminEditGUIPageOne(NationEditorManager.getPlayersNation((Player) event.getWhoClicked())));
+            return;
 
             default:
                 return;
         }
-        for (String sp : NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getMembers()) {
-            Player p = Bukkit.getPlayer(UUID.fromString(sp));
-            String prefix;
-            String suffix;
-            if (NametagEdit.getApi().getNametag(p) != null) {
-                prefix = NametagEdit.getApi().getNametag(p).getPrefix().substring(0, 9) + NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
-                suffix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "▶";
-            } else {
-                prefix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + " ◀" + ChatColor.COLOR_CHAR + "7";
-                suffix = NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getColor() + "▶";
-            }
-            p.performCommand("nte player " + p.getName() + " clear");
-            p.performCommand("nte player " + p.getName() + " prefix " + prefix);
-            p.performCommand("nte player " + p.getName() + " suffix " + suffix);
-        }
-
         event.getWhoClicked().openInventory(ConfirmEditGUI.getConfirmMenu());
 
     }

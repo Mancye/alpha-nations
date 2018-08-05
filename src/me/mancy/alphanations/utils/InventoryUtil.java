@@ -9,6 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +22,21 @@ public class InventoryUtil {
         emptyMeta.setDisplayName(ChatColor.GREEN + "Stay Tuned");
         emptySlot.setItemMeta(emptyMeta);
 
-        for (int i = 0; i < inv.getSize(); i++) {
+        ItemStack none = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemMeta noneMeta = none.getItemMeta();
+        noneMeta.setDisplayName(" ");
+        none.setItemMeta(noneMeta);
+        for (int i = 0; i < 12; i++) {
+            inv.setItem(i, none);
+        }
+        for (int i = 12; i < inv.getSize(); i++) {
             if (inv.getItem(i) == null || inv.getItem(i).getType().equals(Material.AIR)) {
-                inv.setItem(i, emptySlot);
+                if (i % 2 == 0) {
+                    inv.setItem(i, none);
+                } else {
+                    inv.setItem(i, emptySlot);
+                }
+
             }
         }
     }
@@ -40,7 +53,7 @@ public class InventoryUtil {
         }
     }
 
-    public static Inventory fillNations(Inventory inv, int startSlot) {
+    public static void fillNations(Inventory inv, int startSlot) {
         int slot = startSlot;
         for (Nation nation : NationManager.getNationList()) {
             /*if (slot > inv.getSize() && slot < 54) {
@@ -67,7 +80,6 @@ public class InventoryUtil {
             inv.setItem(slot, nationItem);
             slot += 2;
         }
-        return inv;
     }
 
     public static void addButton(Inventory inv, Material material, String name) {
@@ -76,6 +88,39 @@ public class InventoryUtil {
         meta.setDisplayName(name);
         item.setItemMeta(meta);
         inv.addItem(item);
+    }
+
+    public static void addButton(Inventory inv, Material material, String name, List<String> lore) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(lore);
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        inv.addItem(item);
+    }
+
+    public static void addButton(Inventory inv, int slot, Material material, String name, List<String> lore) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(lore);
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        inv.setItem(slot, item);
+    }
+
+    public static void addButton(Inventory inv, int slot, Material material, String name) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        inv.setItem(slot, item);
+    }
+
+    public static void addButton(Inventory inv, int slot, ItemStack itemStack, String name) {
+        ItemMeta meta = itemStack.getItemMeta();
+        meta.setDisplayName(name);
+        itemStack.setItemMeta(meta);
+        inv.setItem(slot, itemStack);
     }
 
 }

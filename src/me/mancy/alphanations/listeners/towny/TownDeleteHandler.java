@@ -23,7 +23,7 @@ public class TownDeleteHandler implements Listener {
         if (event.getResident() != town.getMayor()) return;
         if (NationManager.getTownsNation(town) == null) return;
         NationManager.getTownsNation(town).broadcast(
-                ChatColor.GRAY + "The town of " + ChatColor.RED + town.getName() + ChatColor.GRAY + " has left the nation of " + ChatColor.RED + NationManager.getTownsNation(town).getName());
+                ChatColor.GRAY + "The town of " + ChatColor.RED + town.getName() + ChatColor.GRAY + " has left the nation of " + NationManager.getTownsNation(town).getColor() + NationManager.getTownsNation(town).getName());
         NationManager.getTownsNation(town).removeTown(town);
 
     }

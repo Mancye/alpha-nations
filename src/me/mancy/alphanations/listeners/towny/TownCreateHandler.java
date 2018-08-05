@@ -41,7 +41,7 @@ public class TownCreateHandler implements Listener {
                     if (NationManager.getPlayersNation(p) == null) return;
                     nation.addTown(town);
                     nation.broadcast(ChatColor.GRAY + "The town of " + ChatColor.GREEN + town.getName() +
-                            ChatColor.GRAY + " has joined the nation of " + ChatColor.GREEN + nation.getName());
+                            ChatColor.GRAY + " has joined the nation of " + nation.getColor() + nation.getName());
                 } catch (TownyException e) {
                     e.printStackTrace();
                 }

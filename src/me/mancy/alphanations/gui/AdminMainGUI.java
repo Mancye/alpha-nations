@@ -15,50 +15,31 @@ import java.util.List;
 public class AdminMainGUI {
 
 
-    public static Inventory getAdminEditGUI(Nation nationToEdit) {
+    public static Inventory getAdminEditGUIPageOne(Nation nationToEdit) {
         /*
          10           12              14           16
          Edit Block   Edit Name   Edit Color   Delete Nation
          Grass Block   Nametag    White wool   Barrier
          */
-        final Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation: " + nationToEdit.getName());
-
-        ItemStack editBlock = new ItemStack(Material.GRASS);
-        ItemMeta editBlockMeta = editBlock.getItemMeta();
-        editBlockMeta.setDisplayName(ChatColor.GREEN + "Edit block");
+        final Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation (Page 1): " + nationToEdit.getName());
         List<String> blockLore = new ArrayList<>();
         blockLore.add(ChatColor.GRAY + "Edit the block which will represent");
         blockLore.add(ChatColor.GRAY + "the nation during selection.");
-        editBlockMeta.setLore(blockLore);
-        editBlock.setItemMeta(editBlockMeta);
-        mainAdminGUI.setItem(10, editBlock);
+        InventoryUtil.addButton(mainAdminGUI, 10, Material.GRASS, ChatColor.GREEN + "Edit block", blockLore);
 
-        ItemStack editName = new ItemStack(Material.NAME_TAG);
-        ItemMeta editNameMeta = editBlock.getItemMeta();
-        editNameMeta.setDisplayName(ChatColor.YELLOW + "Edit name");
         List<String> nameLore = new ArrayList<>();
         nameLore.add(ChatColor.GRAY + "Change the name of the nation.");
-        editNameMeta.setLore(nameLore);
-        editName.setItemMeta(editNameMeta);
-        mainAdminGUI.setItem(12, editName);
+        InventoryUtil.addButton(mainAdminGUI, 12, Material.NAME_TAG, ChatColor.YELLOW + "Edit name", nameLore);
 
-        ItemStack editColor = new ItemStack(Material.WHITE_WOOL);
-        ItemMeta editColorMeta = editBlock.getItemMeta();
-        editColorMeta.setDisplayName(ChatColor.DARK_AQUA + "Edit color");
         List<String> colorLore = new ArrayList<>();
         colorLore.add(ChatColor.GRAY + "Set the nation's main color.");
-        editColorMeta.setLore(colorLore);
-        editColor.setItemMeta(editColorMeta);
-        mainAdminGUI.setItem(14, editColor);
+        InventoryUtil.addButton(mainAdminGUI, 14, Material.WHITE_WOOL, ChatColor.DARK_AQUA + "Edit color", colorLore);
 
-        ItemStack deleteNation = new ItemStack(Material.BARRIER);
-        ItemMeta deleteMeta = deleteNation.getItemMeta();
-        deleteMeta.setDisplayName(ChatColor.RED + "Delete nation");
         List<String> deleteLore = new ArrayList<>();
         deleteLore.add(ChatColor.GRAY + "Delete this nation.");
-        deleteMeta.setLore(deleteLore);
-        deleteNation.setItemMeta(deleteMeta);
-        mainAdminGUI.setItem(16, deleteNation);
+        InventoryUtil.addButton(mainAdminGUI, 16, Material.BARRIER, ChatColor.RED + "Delete nation", deleteLore);
+
+        InventoryUtil.addButton(mainAdminGUI, 26, Material.ARROW, ChatColor.RED + "Next");
 
         InventoryUtil.fillEmptySlots(mainAdminGUI);
 
@@ -66,6 +47,36 @@ public class AdminMainGUI {
 
     }
 
+    public static Inventory getAdminEditGUIPageTwo(Nation nationToEdit) {
+        /*
+         11           13              15
+         Edit Desc   Set Leader   Set leadership
+         Book   Iron sword    Diamond sword
+         */
+        final Inventory mainAdminGUI = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.ITALIC.toString() + "Editing Nation (Page 2): " + nationToEdit.getName());
+        List<String> descLore = new ArrayList<>();
+        descLore.add(ChatColor.GRAY + "Change the nation description.");
+        InventoryUtil.addButton(mainAdminGUI, 10, Material.BOOK, ChatColor.GOLD + "Edit description", descLore);
+
+        List<String> leaderLore = new ArrayList<>();
+        leaderLore.add(ChatColor.GRAY + "Pick the nation leader.");
+        InventoryUtil.addButton(mainAdminGUI, 12, Material.IRON_SWORD, ChatColor.WHITE + "Edit leader", leaderLore);
+
+        List<String> leadershipLore = new ArrayList<>();
+        leadershipLore.add(ChatColor.GRAY + "Pick the leadership type.");
+        InventoryUtil.addButton(mainAdminGUI, 14, Material.DIAMOND_SWORD, ChatColor.AQUA + "Edit leadership", leadershipLore);
+
+        List<String> capitallore = new ArrayList<>();
+        capitallore.add(ChatColor.GRAY + "Pick the capital name.");
+        InventoryUtil.addButton(mainAdminGUI, 16, Material.FEATHER, ChatColor.LIGHT_PURPLE + "Edit capital", capitallore);
+
+        InventoryUtil.addButton(mainAdminGUI, 18, Material.ARROW, ChatColor.RED + "Back");
+
+        InventoryUtil.fillEmptySlots(mainAdminGUI);
+
+        return mainAdminGUI;
+
+    }
 
 
 

@@ -18,6 +18,11 @@ public class NationEditorManager {
     public static final Map<Nation, ItemStack> blockChanges = new HashMap<>();
     public static final Map<Nation, ChatColor> colorChanges = new HashMap<>();
     public static final Map<Nation, String> nameChanges = new HashMap<>();
+    public static final Map<Nation, String> leadernameChanges = new HashMap<>();
+    public static final Map<Nation, String> leadershiptypeChanges = new HashMap<>();
+    public static final Map<Nation, String> capitalnameChanges = new HashMap<>();
+    public static final Map<Nation, String> descriptionChanges = new HashMap<>();
+    public static final List<Nation> descriptionsToClear = new ArrayList<>();
     public static final List<Nation> nationsToDelete = new ArrayList<>();
 
     public static Nation getPlayersNation(Player p) {

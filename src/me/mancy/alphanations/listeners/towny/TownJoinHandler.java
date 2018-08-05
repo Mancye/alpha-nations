@@ -50,7 +50,7 @@ public class TownJoinHandler implements Listener, Runnable {
                         Resident r = TownyUniverse.getDataSource().getResident(p.getName());
                         try {
                             event.getTown().removeResident(r);
-                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "You may only join towns that belong to the nation of " + nation.getName());
+                            MessageUtil.sendMsgWithPrefix(p, ChatColor.RED + "You may only join towns that belong to the nation of " + nation.getColor() + nation.getName());
                         } catch (EmptyTownException e){
                             e.printStackTrace();
                         }

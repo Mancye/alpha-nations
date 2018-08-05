@@ -12,13 +12,10 @@ import me.mancy.alphanations.listeners.towny.TownCreateHandler;
 import me.mancy.alphanations.listeners.towny.TownDeleteHandler;
 import me.mancy.alphanations.listeners.towny.TownJoinHandler;
 import me.mancy.alphanations.managers.NationManager;
-import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -39,6 +36,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        new Nation(this);
         registerEvents();
         registerCommands();
         loadNations();
@@ -57,23 +55,23 @@ public class Main extends JavaPlugin {
         int x = 1;
         for (Nation n : NationManager.getNationList()) {
             if (x <= NationManager.getNationList().size()) {
-                nationsConfig.set(x + ". name", n.getName());
+                nationsConfig.set(x + ".name", n.getName());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". members", n.getMembers());
+                nationsConfig.set(x + ".members", n.getMembers());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". menudescription", n.getMenuDescription());
+                nationsConfig.set(x + ".menudescription", n.getMenuDescription());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". item", n.getItem().getType().name());
+                nationsConfig.set(x + ".item", n.getItem().getType().name());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". capitallocation", n.getCapital());
+                nationsConfig.set(x + ".capitallocation", n.getCapital());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". color", n.getColor().toString());
+                nationsConfig.set(x + ".color", n.getColor().toString());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". leader", n.getLeaderName());
+                nationsConfig.set(x + ".leader", n.getLeaderName());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". leadershiptype", n.getLeadershipType());
+                nationsConfig.set(x + ".leadershiptype", n.getLeadershipType());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ". capitalname", n.getCapitalName());
+                nationsConfig.set(x + ".capitalname", n.getCapitalName());
                 saveCustomYml(nationsConfig, nationsFile);
                 x++;
             } else {
@@ -87,36 +85,36 @@ public class Main extends JavaPlugin {
 
     private void loadNations() {
         if (!nationsConfig.contains("Amount of Nations")) {
-            nationsConfig.set("Amount of Nations", 0);
+            nationsConfig.set("Amount of Nations", NationManager.getAmountNations());
             saveCustomYml(nationsConfig, nationsFile);
         }
         NationManager.getNationList().clear();
         int amtNations = nationsConfig.getInt("Amount of Nations");
         for (int x = 1; x <= amtNations; x++) {
-            final String name = nationsConfig.getString(x + ". name");
+            final String name = nationsConfig.getString(x + ".name");
             final List<String> members = new ArrayList<>();
-            for (String strUUID : nationsConfig.getStringList(x + ". members")) {
+            for (String strUUID : nationsConfig.getStringList(x + ".members")) {
                 UUID uuid = UUID.fromString(strUUID);
                 if (!members.contains(uuid.toString())) members.add(uuid.toString());
             }
-            if (!nationsConfig.contains(x + ". menudescription")) nationsConfig.set(x + ". menudescription", null);
-            final List<String> menuDescription = nationsConfig.getStringList(x + ". menudescription");
-            if (!nationsConfig.contains(x + ". item")) nationsConfig.set(x + ". item", null);
-            final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ". item")));
-            if (!nationsConfig.contains(x + ". capitallocation")) nationsConfig.set(x + ". capitallocation", null);
+            if (!nationsConfig.contains(x + ".menudescription")) nationsConfig.set(x + ".menudescription", null);
+            final List<String> menuDescription = nationsConfig.getStringList(x + ".menudescription");
+            if (!nationsConfig.contains(x + ".item")) nationsConfig.set(x + ".item", null);
+            final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ".item")));
+            if (!nationsConfig.contains(x + ".capitallocation")) nationsConfig.set(x + ".capitallocation", null);
             Location capital = new Location(Bukkit.getWorld("world"), 0, 0, 0);
-            if (nationsConfig.get(x + ". capitallocation") != null) {
-                capital = (Location) nationsConfig.get(x + ". capitallocation");
+            if (nationsConfig.get(x + ".capitallocation") != null) {
+                capital = (Location) nationsConfig.get(x + ".capitallocation");
             }
 
-            if (!nationsConfig.contains(x + ". color")) nationsConfig.set(x + ". color", null);
-            final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ". color").toString().charAt(1));
-            if (!nationsConfig.contains(x + ". leader")) nationsConfig.set(x + ". leader", null);
-            String leaderName = nationsConfig.getString(x + ". leader");
-            if (!nationsConfig.contains(x + ". leadershiptype")) nationsConfig.set(x + ". leadershiptype", null);
-            String leadershiptype = nationsConfig.getString(x + ". leadershiptype");
-            if (!nationsConfig.contains(x + ". capitalname")) nationsConfig.set(x + ". capitalname", null);
-            String capitalName = nationsConfig.getString(x + ". capitalname");
+            if (!nationsConfig.contains(x + ".color")) nationsConfig.set(x + ".color", null);
+            final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ".color").toString().charAt(1));
+            if (!nationsConfig.contains(x + ".leader")) nationsConfig.set(x + ".leader", null);
+            String leaderName = nationsConfig.getString(x + ".leader");
+            if (!nationsConfig.contains(x + ".leadershiptype")) nationsConfig.set(x + ".leadershiptype", null);
+            String leadershiptype = nationsConfig.getString(x + ".leadershiptype");
+            if (!nationsConfig.contains(x + ".capitalname")) nationsConfig.set(x + ".capitalname", null);
+            String capitalName = nationsConfig.getString(x + ".capitalname");
             Nation nation = new Nation(name, members, capital);
             nation.setMenuDescription(menuDescription);
             nation.setItem(item);
@@ -124,7 +122,7 @@ public class Main extends JavaPlugin {
             nation.setCapitalName(capitalName);
             nation.setLeaderName(leaderName);
             nation.setLeadershipType(leadershiptype);
-            NationManager.addNation(nation);
+
             try {
             for (String pUUID : nation.getMembers()) {
                 Player player = Bukkit.getPlayer(UUID.fromString(pUUID));
@@ -143,7 +141,7 @@ public class Main extends JavaPlugin {
             } catch (NotRegisteredException e) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "PA NATIONS ERROR: TOWNY FAILED PLUGIN SHUTTING DOWN");
             }
-
+            NationManager.addNation(nation);
         }
         if (!nationsConfig.contains("chooselocation")) nationsConfig.set("chooselocation", null);
         Location choose = new Location(Bukkit.getWorld("world"), 0, 0, 0);
@@ -167,6 +165,8 @@ public class Main extends JavaPlugin {
         new ConfirmEditGUIHandler(this);
         new EditBlockGUIHandler(this);
         new EditColorGUIHandler(this);
+        new EditDescriptionHandler(this);
+        new EditLeadershipHandler(this);
         //misc
         new JoinNation(this);
         if (this.getServer().getPluginManager().isPluginEnabled("NametagEdit")) {
