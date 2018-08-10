@@ -32,9 +32,12 @@ public class EditBlockGUIHandler implements Listener {
 
         if (event.getSlot() != 4) {
             if (event.getSlot() == 0) {
-
-                NationEditorManager.playersEditType.remove((Player) event.getWhoClicked());
-                event.getWhoClicked().openInventory(AdminMainGUI.getAdminEditGUIPageOne(NationEditorManager.getPlayersNation((Player) event.getWhoClicked())));
+                if (event.getInventory().getItem(4).getType().equals(NationEditorManager.getPlayersNation((Player) event.getWhoClicked()).getItem().getType())) {
+                    NationEditorManager.playersEditType.remove((Player) event.getWhoClicked());
+                    event.getWhoClicked().openInventory(AdminMainGUI.getAdminEditGUIPageOne(NationEditorManager.getPlayersNation((Player) event.getWhoClicked())));
+                } else {
+                    event.getWhoClicked().closeInventory();
+                }
             }
             event.setCancelled(true);
         }
@@ -45,12 +48,7 @@ public class EditBlockGUIHandler implements Listener {
     private void setBlock(InventoryCloseEvent event) {
         if (event.getInventory() == null) return;
         if (!event.getInventory().getName().contains(ChatColor.RED + "Set Nation's Block")) return;
-        if (!(NationEditorManager.playersEditType.containsKey((Player)event.getPlayer()))) {
-            System.out.println("NOT HERE");
-            return;
-        } else {
-            System.out.println("STILL HERE");
-        }
+        if (!(NationEditorManager.playersEditType.containsKey((Player)event.getPlayer())))return;
         if (event.getPlayer() == null) return;
         Nation n = NationEditorManager.getPlayersNation((Player)event.getPlayer());
         if (event.getInventory().getItem(4) != null) {

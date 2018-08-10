@@ -9,15 +9,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InventoryUtil {
 
     public static void fillEmptySlotsNationSelect(Inventory inv) {
-        ItemStack emptySlot = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemStack emptySlot = new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE);
         ItemMeta emptyMeta = emptySlot.getItemMeta();
         emptyMeta.setDisplayName(ChatColor.GREEN + "Stay Tuned");
         emptySlot.setItemMeta(emptyMeta);
@@ -26,19 +23,18 @@ public class InventoryUtil {
         ItemMeta noneMeta = none.getItemMeta();
         noneMeta.setDisplayName(" ");
         none.setItemMeta(noneMeta);
-        for (int i = 0; i < 12; i++) {
-            inv.setItem(i, none);
-        }
-        for (int i = 12; i < inv.getSize(); i++) {
-            if (inv.getItem(i) == null || inv.getItem(i).getType().equals(Material.AIR)) {
-                if (i % 2 == 0) {
-                    inv.setItem(i, none);
-                } else {
-                    inv.setItem(i, emptySlot);
-                }
 
+        Integer[] slots = {10, 12, 14, 16, 37, 39, 41, 43};
+        for (int i = 0; i < inv.getSize(); i++) {
+            if (Arrays.asList(slots).contains(i)) {
+                if (inv.getItem(i) == null)
+                inv.setItem(i, emptySlot);
+            } else {
+                inv.setItem(i, none);
             }
+
         }
+
     }
     public static void fillEmptySlots(Inventory inv) {
         ItemStack emptySlot = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -56,20 +52,6 @@ public class InventoryUtil {
     public static void fillNations(Inventory inv, int startSlot) {
         int slot = startSlot;
         for (Nation nation : NationManager.getNationList()) {
-            /*if (slot > inv.getSize() && slot < 54) {
-                Map<ItemStack, Integer> previousInv = new HashMap<>();
-                for (int x = 0; x < inv.getSize() - 1; x++) {
-                    if (inv.getItem(x) != null && !inv.getItem(x).getType().equals(Material.AIR))
-                        previousInv.put(inv.getItem(x), x);
-                }
-                Inventory resizedInv = Bukkit.createInventory(inv.getHolder(), 54, inv.getTitle());
-                for (ItemStack i : previousInv.keySet()) {
-                    resizedInv.setItem(previousInv.get(i), i);
-                }
-                inv = resizedInv;
-                return resizedInv;
-                }
-                */
             ItemStack nationItem = nation.getItem();
             if (nation.getItem() == null) nationItem = new ItemStack(Material.BARRIER);
             ItemMeta nationMeta = nationItem.getItemMeta();
@@ -78,7 +60,16 @@ public class InventoryUtil {
             nationMeta.setLore(nationLore);
             nationItem.setItemMeta(nationMeta);
             inv.setItem(slot, nationItem);
-            slot += 2;
+            if (inv.getSize() == 27) {
+                    inv.setItem(slot, nationItem);
+                    slot += 2;
+            } else if (inv.getSize() == 54) {
+                if (slot == 16) {
+                    slot += 21;
+                } else {
+                    slot += 2;
+                }
+            }
         }
     }
 

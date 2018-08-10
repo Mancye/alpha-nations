@@ -112,7 +112,6 @@ public class NationManager {
     }
 
     public static Nation getTownsNation(Town town) {
-        if (town == null) return null;
 
         for (Nation n : nationList) {
             if (n.getTowns().contains(town)) {

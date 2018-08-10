@@ -24,17 +24,17 @@ public class EditLeadershipHandler implements Listener {
         Nation nation = NationEditorManager.getPlayersNation(p);
         event.setCancelled(true);
         switch (event.getSlot()) {
-            case 10:
+            case 11:
                 NationEditorManager.playersEditType.put(p, "LEADERSHIP");
                 NationEditorManager.leadershiptypeChanges.put(nation, "Monarchy");
                 p.openInventory(ConfirmEditGUI.getConfirmMenu());
                 break;
-            case 12:
+            case 13:
                 NationEditorManager.playersEditType.put(p, "LEADERSHIP");
                 NationEditorManager.leadershiptypeChanges.put(nation, "Diplomacy");
                 p.openInventory(ConfirmEditGUI.getConfirmMenu());
                 break;
-            case 14:
+            case 15:
                 NationEditorManager.playersEditType.put(p, "LEADERSHIP");
                 NationEditorManager.leadershiptypeChanges.put(nation, "Tyranny");
                 p.openInventory(ConfirmEditGUI.getConfirmMenu());

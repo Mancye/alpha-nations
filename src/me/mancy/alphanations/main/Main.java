@@ -63,7 +63,13 @@ public class Main extends JavaPlugin {
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ".item", n.getItem().getType().name());
                 saveCustomYml(nationsConfig, nationsFile);
-                nationsConfig.set(x + ".capitallocation", n.getCapital());
+                nationsConfig.set(x + ".capitallocation" + ".x", n.getCapital().getX());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ".capitallocation" + ".y", n.getCapital().getY());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ".capitallocation" + ".z", n.getCapital().getZ());
+                saveCustomYml(nationsConfig, nationsFile);
+                nationsConfig.set(x + ".capitallocation" + ".world", n.getCapital().getWorld().getName());
                 saveCustomYml(nationsConfig, nationsFile);
                 nationsConfig.set(x + ".color", n.getColor().toString());
                 saveCustomYml(nationsConfig, nationsFile);
@@ -78,7 +84,13 @@ public class Main extends JavaPlugin {
                 break;
             }
         }
-        nationsConfig.set("chooselocation", chooseLocation);
+        nationsConfig.set("chooselocation" + ".x", chooseLocation.getX());
+        saveCustomYml(nationsConfig, nationsFile);
+        nationsConfig.set("chooselocation" + ".y", chooseLocation.getY());
+        saveCustomYml(nationsConfig, nationsFile);
+        nationsConfig.set("chooselocation" + ".z", chooseLocation.getZ());
+        saveCustomYml(nationsConfig, nationsFile);
+        nationsConfig.set("chooselocation" + ".world", chooseLocation.getWorld().getName());
         saveCustomYml(nationsConfig, nationsFile);
 
     }
@@ -101,11 +113,11 @@ public class Main extends JavaPlugin {
             final List<String> menuDescription = nationsConfig.getStringList(x + ".menudescription");
             if (!nationsConfig.contains(x + ".item")) nationsConfig.set(x + ".item", null);
             final ItemStack item = new ItemStack(Material.getMaterial(nationsConfig.getString(x + ".item")));
-            if (!nationsConfig.contains(x + ".capitallocation")) nationsConfig.set(x + ".capitallocation", null);
-            Location capital = new Location(Bukkit.getWorld("world"), 0, 0, 0);
-            if (nationsConfig.get(x + ".capitallocation") != null) {
-                capital = (Location) nationsConfig.get(x + ".capitallocation");
-            }
+            if (!nationsConfig.contains(x + ".capitallocation" + ".x")) nationsConfig.set(x + ".capitallocation" + ".x", 0.0);
+            if (!nationsConfig.contains(x + ".capitallocation" + ".y")) nationsConfig.set(x + ".capitallocation" + ".y", 0.0);
+            if (!nationsConfig.contains(x + ".capitallocation" + ".z")) nationsConfig.set(x + ".capitallocation" + ".z", 0.0);
+            if (!nationsConfig.contains(x + ".capitallocation" + ".world")) nationsConfig.set(x + ".capitallocation" + ".world", "world");
+            Location capital = new Location(Bukkit.getWorld(nationsConfig.getString(x + ".capitallocation" + ".world")), nationsConfig.getDouble(x + ".capitallocation" + ".x"), nationsConfig.getDouble(x + ".capitallocation" + ".y"), nationsConfig.getDouble(x + ".capitallocation" + ".z"));
 
             if (!nationsConfig.contains(x + ".color")) nationsConfig.set(x + ".color", null);
             final ChatColor color = ChatColor.getByChar(nationsConfig.get(x + ".color").toString().charAt(1));
@@ -143,12 +155,12 @@ public class Main extends JavaPlugin {
             }
             NationManager.addNation(nation);
         }
-        if (!nationsConfig.contains("chooselocation")) nationsConfig.set("chooselocation", null);
-        Location choose = new Location(Bukkit.getWorld("world"), 0, 0, 0);
-        if (nationsConfig.get("chooselocation") != null) {
-            choose = (Location) nationsConfig.get("chooselocation");
-        }
-        chooseLocation = choose;
+        if (!nationsConfig.contains("chooselocation" + ".x")) nationsConfig.set("chooselocation" + ".x", 0.0);
+        if (!nationsConfig.contains("chooselocation" + ".y")) nationsConfig.set("chooselocation" + ".y", 0.0);
+        if (!nationsConfig.contains("chooselocation" + ".z")) nationsConfig.set("chooselocation" + ".z", 0.0);
+        if (!nationsConfig.contains("chooselocation" + ".world")) nationsConfig.set("chooselocation" + ".world", "world");
+        Main.chooseLocation = new Location(Bukkit.getWorld(nationsConfig.getString("chooselocation" + ".world")),
+                (nationsConfig.getDouble("chooselocation" + ".x")), nationsConfig.getDouble("chooselocation" + ".y"), nationsConfig.getDouble("chooselocation" + ".z"));
     }
 
     private void registerCommands() {

@@ -21,7 +21,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Towny.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/NametagEdit.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -30,7 +30,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NametagEdit.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/MancyeTowny.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

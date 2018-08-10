@@ -5,6 +5,7 @@ import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
+import org.apache.logging.log4j.message.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -128,20 +129,15 @@ public class BaseCommand implements CommandExecutor {
                         if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations add/remove (name)" + ChatColor.GRAY + " To add/remove a nation with the specified name");
                         }
-                        if (p.hasPermission("nations.setcapital") || p.hasPermission("nations.*")) {
-                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setcapital (nation name)" + ChatColor.GRAY + " To set the capital location of a specified nation to your current location");
-                        }
-                        if (p.hasPermission("nations.setcapital") || p.hasPermission("nations.*")) {
+                        if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setchooselocation" + ChatColor.GRAY + " To set the location that players will be at when choosing a nation");
                         }
                         if (p.hasPermission("nations.list") || p.hasPermission("nations.*")) {
                             p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations list" + ChatColor.GRAY + " To list nations");
                         }
-                        if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
-                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setcapitalname (nation name) (capital name)" + ChatColor.GRAY + " To set the capital name of the specified nation");
-                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setleadership (nation name) (monarchy/tyranny/diplomacy)" + ChatColor.GRAY + " To set the leadership type of the specified nation");
-                            p.sendMessage(helpPrefix + ChatColor.GREEN + ChatColor.ITALIC.toString() + " /nations setleader (nation name) (name)" + ChatColor.GRAY + " To set the leaders name of the specified nation");
-                        }
+                    } else {
+                        MessageUtil.sendNoPermissionMsg(p);
+                        return true;
                     }
                 } else if (args[0].equalsIgnoreCase("select")) {
                     if (p.hasPermission("nations.select") || p.hasPermission("nations.*")) {
@@ -241,89 +237,6 @@ public class BaseCommand implements CommandExecutor {
                     return true;
                 }
 
-            } else if (args.length == 3) {
-                if (args[0].equalsIgnoreCase("setcapitalname")) {
-                    if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
-                        if (!args[1].equalsIgnoreCase("") && !args[2].equalsIgnoreCase("")) {
-                            if (NationManager.getNation(args[1]) != null) {
-                                NationManager.getNation(args[1]).setCapitalName(ChatColor.translateAlternateColorCodes('&', args[2]));
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Set capital name of " +
-                                        ChatColor.GREEN + NationManager.getNation(args[1]).getName() +
-                                        ChatColor.GRAY + " To " + ChatColor.GREEN + NationManager.getNation(args[1]).getCapitalName());
-                            } else {
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nation not found, see a list of available nations with " + ChatColor.GREEN + "/nations list");
-                            }
-                        } else {
-                            MessageUtil.sendInvalidArgumentsMsg(p);
-                            return true;
-                        }
-                    } else {
-                        MessageUtil.sendNoPermissionMsg(p);
-                        return true;
-                    }
-                } else if (args[0].equalsIgnoreCase("setleader")) {
-                    if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
-                        if (!args[1].equalsIgnoreCase("") && !args[2].equalsIgnoreCase("")) {
-                            if (NationManager.getNation(args[1]) != null) {
-                                NationManager.getNation(args[1]).setLeaderName(args[2]);
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Set leader of " +
-                                                                            ChatColor.GREEN + NationManager.getNation(args[1]).getName() +
-                                        ChatColor.GRAY + " To " + ChatColor.GREEN + NationManager.getNation(args[1]).getLeaderName());
-                            } else {
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nation not found, see a list of available nations with " + ChatColor.GREEN + "/nations list");
-                            }
-                        } else {
-                            MessageUtil.sendInvalidArgumentsMsg(p);
-                            return true;
-                        }
-                    } else {
-                        MessageUtil.sendNoPermissionMsg(p);
-                        return true;
-                    }
-                } else if (args[0].equalsIgnoreCase("setleadership")) {
-                    if (p.hasPermission("nations.edit") || p.hasPermission("nations.*")) {
-                        if (!args[1].equalsIgnoreCase("") && !args[2].equalsIgnoreCase("")) {
-                            if (NationManager.getNation(args[1]) != null) {
-                                if (!(args[2].equalsIgnoreCase("tyranny") || args[2].equalsIgnoreCase("monarchy") || args[2].equalsIgnoreCase("diplomacy"))) {
-                                    MessageUtil.sendInvalidArgumentsMsg(p);
-                                    return true;
-                                }
-                                String type = args[2];
-                                String formattedType = type.substring(0, 1).toUpperCase();
-                                for (int x = 1; x < type.length(); x++) {
-                                    formattedType += type.substring(x, x + 1).toLowerCase();
-                                }
-
-                                Nation n = NationManager.getNation(args[1]);
-                                n.setLeadershipType(formattedType);
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Set leadership of " +
-                                        ChatColor.GREEN + n.getName() +
-                                        ChatColor.GRAY + " To " + ChatColor.GREEN + n.getLeadershipType());
-                                ChatColor typeColor = ChatColor.WHITE;
-                                if (formattedType.equalsIgnoreCase("tyranny")) {
-                                    typeColor = ChatColor.RED;
-                                } else if (formattedType.equalsIgnoreCase("monarchy")) {
-                                    typeColor = ChatColor.AQUA;
-                                } else {
-                                    typeColor = ChatColor.GREEN;
-                                }
-
-                                n.broadcast(ChatColor.GRAY + "The leadership of your nation has changed to a " + typeColor + formattedType);
-                            } else {
-                                MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Nation not found, see a list of available nations with " + ChatColor.GREEN + "/nations list");
-                            }
-                        } else {
-                            MessageUtil.sendInvalidArgumentsMsg(p);
-                            return true;
-                        }
-                    } else {
-                        MessageUtil.sendNoPermissionMsg(p);
-                        return true;
-                    }
-                }
-            } else {
-                MessageUtil.sendInvalidArgumentsMsg(p);
-                return true;
             }
         }
 

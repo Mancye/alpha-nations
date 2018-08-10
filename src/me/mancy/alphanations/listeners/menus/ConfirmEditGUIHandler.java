@@ -4,6 +4,7 @@ import me.mancy.alphanations.gui.*;
 import me.mancy.alphanations.main.Main;
 import me.mancy.alphanations.main.Nation;
 import me.mancy.alphanations.managers.NationEditorManager;
+import me.mancy.alphanations.managers.NationManager;
 import me.mancy.alphanations.utils.MessageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -96,6 +97,13 @@ public class ConfirmEditGUIHandler implements Listener {
                         NationEditorManager.descriptionsToClear.remove(n);
                         NationEditorManager.playersEditType.remove(p);
                         p.openInventory(AdminEditDescriptionGUI.getDescMenu(n));
+                    }
+                } else if (NationEditorManager.playersEditType.get(p).equalsIgnoreCase("DELETE")) {
+                    if (NationEditorManager.nationsToDelete.contains(n)) {
+                        NationManager.removeNation(n);
+                        NationEditorManager.nationsToDelete.remove(n);
+                        NationEditorManager.playersEditType.remove(p);
+                        p.openInventory(NationSelectionGUI.getAdminNationSelectionInventory());
                     }
                 }
 

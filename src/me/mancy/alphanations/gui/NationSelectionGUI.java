@@ -9,14 +9,14 @@ import org.bukkit.inventory.Inventory;
 public class NationSelectionGUI {
 
     private static void setupNationSelectInv(Inventory inv) {
-        InventoryUtil.fillNations(inv, 12);
+        InventoryUtil.fillNations(inv, 10);
         InventoryUtil.fillEmptySlotsNationSelect(inv);
     }
 
     public static Inventory getPlayerNationSelectionInventory() {
         final String invName = ChatColor.RED + "Choose a nation";
         Inventory selectionGUI;
-        if (NationManager.getAmountNations() > 8) {
+        if (NationManager.getAmountNations() > 4) {
             selectionGUI = Bukkit.createInventory(null, 54, invName);
         } else {
             selectionGUI = Bukkit.createInventory(null, 27, invName);
@@ -29,7 +29,7 @@ public class NationSelectionGUI {
     public static Inventory getAdminNationSelectionInventory() {
         final String invName = ChatColor.RED + "Choose a nation to edit";
         Inventory selectionGUI;
-        if (NationManager.getAmountNations() > 8) {
+        if (NationManager.getAmountNations() > 4) {
             selectionGUI = Bukkit.createInventory(null, 54, invName);
         } else {
             selectionGUI = Bukkit.createInventory(null, 27, invName);

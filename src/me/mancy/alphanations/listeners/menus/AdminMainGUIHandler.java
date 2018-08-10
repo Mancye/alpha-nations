@@ -30,8 +30,7 @@ public class AdminMainGUIHandler implements Listener {
 
     @EventHandler
     private void handlePageOne(InventoryClickEvent event) {
-        if (!(event.getInventory().getName().contains("Editing Nation:"))) return;
-        if (!(event.getInventory().getName().contains("1"))) return;
+        if (!(event.getInventory().getName().contains("Editing Nation (Page 1):"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player p = (Player) event.getWhoClicked();
         event.setCancelled(true);
@@ -68,8 +67,7 @@ public class AdminMainGUIHandler implements Listener {
 
     @EventHandler
     private void handlePageTwo(InventoryClickEvent event) {
-        if (!(event.getInventory().getName().contains("Editing Nation:"))) return;
-        if (!(event.getInventory().getName().contains("2"))) return;
+        if (!(event.getInventory().getName().contains("Editing Nation (Page 2):"))) return;
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player p = (Player) event.getWhoClicked();
         event.setCancelled(true);
@@ -101,7 +99,7 @@ public class AdminMainGUIHandler implements Listener {
 
     @EventHandler
     private void showBlock(InventoryOpenEvent event) {
-        if (!event.getInventory().getName().contains("Editing Nation:")) return;
+        if (!event.getInventory().getName().contains("Editing Nation")) return;
         if (!event.getInventory().getName().contains("1")) return;
         event.getInventory().getItem(10).setType(NationEditorManager.getPlayersNation((Player)event.getPlayer()).getItem().getType());
     }
@@ -127,7 +125,7 @@ public class AdminMainGUIHandler implements Listener {
         NationEditorManager.capitalnameChanges.put(nation, newName);
         NationEditorManager.playersEditType.put(event.getPlayer(), "CAPITAL");
         event.getPlayer().openInventory(ConfirmEditGUI.getConfirmMenu());
-        playersEditingNames.remove(event.getPlayer());
+        playersEditingCapital.remove(event.getPlayer());
         event.setCancelled(true);
     }
 

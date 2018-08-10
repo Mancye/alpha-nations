@@ -35,15 +35,17 @@ public class EditDescriptionHandler implements Listener {
                 playersEditingDesc.put(p, nation);
                 MessageUtil.sendMsgWithPrefix(p, ChatColor.GRAY + "Enter a line:");
                 break;
-            case 13: if (nation.getMenuDescription().size() >= 1)
+            case 13: if (nation.getMenuDescription().size() >= 1) {
                 NationEditorManager.descriptionsToClear.add(nation);
                 NationEditorManager.playersEditType.put(p, "DESCRIPTION_CLEAR");
                 p.openInventory(ConfirmEditGUI.getConfirmMenu());
+            }
                 break;
-            case 15: if (nation.getMenuDescription().size() >= 1)
+            case 15: if (nation.getMenuDescription().size() >= 1) {
                 NationEditorManager.descriptionChanges.put(nation, nation.getMenuDescription().get(nation.getMenuDescription().size() - 1));
                 NationEditorManager.playersEditType.put(p, "DESCRIPTION_REMOVE");
                 p.openInventory(ConfirmEditGUI.getConfirmMenu());
+            }
                 break;
             case 18: event.getWhoClicked().openInventory(AdminMainGUI.getAdminEditGUIPageTwo(nation));
             break;
@@ -56,7 +58,7 @@ public class EditDescriptionHandler implements Listener {
     private void handleEditDescInput(AsyncPlayerChatEvent event) {
         if (!playersEditingDesc.containsKey(event.getPlayer())) return;
         Nation nation = playersEditingDesc.get(event.getPlayer());
-        String descLine = ChatColor.stripColor(event.getMessage());
+        String descLine = ChatColor.translateAlternateColorCodes('&', event.getMessage());
         NationEditorManager.descriptionChanges.put(nation, descLine);
         NationEditorManager.playersEditType.put(event.getPlayer(), "DESCRIPTION_ADD");
         event.getPlayer().openInventory(ConfirmEditGUI.getConfirmMenu());

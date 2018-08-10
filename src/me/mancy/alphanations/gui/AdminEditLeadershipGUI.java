@@ -20,21 +20,21 @@ public class AdminEditLeadershipGUI {
         monarchyMeta.setBasePotionData(new PotionData(PotionType.SPEED));
         monarchyMeta.setDisplayName(ChatColor.AQUA + "Monarchy");
         monarchy.setItemMeta(monarchyMeta);
-        inv.setItem(10, monarchy);
+        inv.setItem(11, monarchy);
 
         ItemStack diplomacy = new ItemStack(Material.TIPPED_ARROW);
         PotionMeta diplomacyMeta = (PotionMeta) diplomacy.getItemMeta();
         diplomacyMeta.setBasePotionData(new PotionData(PotionType.JUMP));
         diplomacyMeta.setDisplayName(ChatColor.GREEN + "Diplomacy");
         diplomacy.setItemMeta(diplomacyMeta);
-        inv.setItem(12, diplomacy);
+        inv.setItem(13, diplomacy);
 
         ItemStack tyranny = new ItemStack(Material.TIPPED_ARROW);
         PotionMeta tyrannyMeta = (PotionMeta) tyranny.getItemMeta();
-        tyrannyMeta.setBasePotionData(new PotionData(PotionType.SPEED));
+        tyrannyMeta.setBasePotionData(new PotionData(PotionType.INSTANT_HEAL));
         tyrannyMeta.setDisplayName(ChatColor.RED + "Tyranny");
         tyranny.setItemMeta(tyrannyMeta);
-        inv.setItem(14, tyranny);
+        inv.setItem(15, tyranny);
 
         InventoryUtil.addButton(inv, 18, Material.ARROW, ChatColor.RED + "Back");
         InventoryUtil.fillEmptySlots(inv);
